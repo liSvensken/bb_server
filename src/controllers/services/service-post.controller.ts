@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import { connection } from '../../services/db.service';
 
-export function userGetController(req: Request, res: Response) {
+export function servicePostController(req: Request, res: Response) {
   const response = {
     error: null,
     result: null
   };
 
-  connection.query(`SELECT * FROM timetable.users WHERE id=${ req.params.id }`,
+  connection.query(`INSERT INTO timetable.service (name) VALUES ('${ req.body.name }')`,
       (err, result) => {
         if (!err) {
           res.status(200);

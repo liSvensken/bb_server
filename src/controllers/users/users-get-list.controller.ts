@@ -7,7 +7,7 @@ export function usersGetListController(req: Request, res: Response) {
     result: null
   };
 
-  connection.query('SELECT * FROM itproger.users',
+  connection.query(`SELECT * FROM timetable.users`,
       (err, result) => {
         if (!err) {
           res.status(200);

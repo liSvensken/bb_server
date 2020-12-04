@@ -7,7 +7,7 @@ export function userDeleteController(req: Request, res: Response) {
     result: null
   };
 
-  connection.query(`DELETE FROM itproger.users WHERE id=${ req.params.id }`,
+  connection.query(`DELETE FROM timetable.users WHERE id=${ req.params.id }`,
       (err, result) => {
         if (!err) {
           res.status(200);

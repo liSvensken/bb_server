@@ -7,22 +7,34 @@ export function userPatchController(req: Request, res: Response) {
     result: null
   };
 
-  let fieldReplace;
+  let fieldReplace = '';
 
   if (req.body.name) {
-    fieldReplace = `name = '${ req.body.name }'`;
+    if (fieldReplace) {
+      fieldReplace += `, name = '${ req.body.name }'`
+    } else {
+      fieldReplace = `name = '${ req.body.name }'`
+    }
   }
 
-  if (req.body.age) {
-    fieldReplace += `, age = '${ req.body.age }'`
+  if (req.body.email) {
+    if (fieldReplace) {
+      fieldReplace += `, email = '${ req.body.email }'`
+    } else {
+      fieldReplace = `email = '${ req.body.email }'`
+    }
   }
 
-  if (req.body.birth) {
-    fieldReplace += `, birth = '${ req.body.birth }'`
+  if (req.body.services) {
+    if (fieldReplace) {
+      fieldReplace += `, services = '${ req.body.services }'`
+    } else {
+      fieldReplace = `services = '${ req.body.services }'`
+    }
   }
 
   if (fieldReplace) {
-    connection.query(`UPDATE itproger.users SET ${ fieldReplace } WHERE id = ${ req.params.id }`,
+    connection.query(`UPDATE timetable.users SET ${ fieldReplace } WHERE id = ${ req.params.id }`,
         (err, result) => {
           if (!err) {
             res.status(200);
