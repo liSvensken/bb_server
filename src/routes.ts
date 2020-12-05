@@ -6,9 +6,7 @@ import { userPostController } from './controllers/users/user-post.controller';
 import { userDeleteController } from './controllers/users/user-delete.controller';
 import { userPatchController } from './controllers/users/user-patch-controller';
 import { servicesGetListController } from './controllers/services/services-get-list.controller';
-import { servicePostController } from './controllers/services/service-post.controller';
 import { serviceGetController } from './controllers/services/service-get.controller';
-import { connection } from './services/db.service';
 
 export function initRoutesUsers(): void {
   app.get('/users', (req: Request, res: Response) => {
@@ -41,36 +39,8 @@ export function initRoutesServices() {
     serviceGetController(req, res);
   });
 
-  app.post('/services/create', (req: Request, res: Response) => {
-    servicePostController(req, res);
-  })
-}
-
-export function test() {
-  app.get('/test/:id', (req: Request, res: Response) => {
-    const response = {
-      error: null,
-      result: null
-    };
-
-    const queryServices = `
-    SELECT timetable.users.services, timetable.services.serviceName FROM timetable.users 
-    INNER JOIN timetable.services
-    ON timetable.users.services = timetable.services.id
-    `
-
-    connection.query(queryServices ,
-        (err, result) => {
-          console.log(result);
-          if (!err) {
-            res.status(200);
-            response.result = result;
-          } else {
-            res.status(400);
-            response.error = null;
-          }
-
-          res.json(response);
-        });
-  });
+  // не нужно
+  // app.post('/services/create', (req: Request, res: Response) => {
+  //   servicePostController(req, res);
+  // })
 }

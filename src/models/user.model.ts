@@ -1,6 +1,6 @@
 import { ServiceModel } from './service.model';
 import { CityModel } from './city.model';
-import { UserRole } from '../enums/user-role';
+import { UserRole } from '../enums/user.role';
 
 export interface UserModel {
   id: number;
