@@ -6,7 +6,7 @@ import Table = WebAssembly.Table;
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 
 export const getServiceById = (callback: (err: ErrorInterface, statusCode: number, result: ServiceModel[]) => void,
-                               id: string) => {
+                               id: number[]) => {
   let error: ErrorInterface = {
     type: '',
     field: '',

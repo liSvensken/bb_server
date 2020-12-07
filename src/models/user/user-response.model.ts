@@ -4,5 +4,5 @@ import { CityModel } from '../city/city.model';
 
 export interface UserResponseModel extends UserConstFields {
   services?: ServiceModel[];
-  city?: CityModel;
+  cities?: CityModel[];
 }

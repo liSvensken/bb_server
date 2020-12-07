@@ -3,8 +3,8 @@ import { queryGetRowList } from '../querys/query-get-row-list';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 import { UserDbModel } from '../../../models/user/user-db.model';
 
-export const getRowsListForTable = (callback: (err: ErrorInterface, statusCode: number, result?: UserDbModel[]) => void,
-                                    table: string, limit: number, offset: number) => {
+export const getRowsListFromTable = (callback: (err: ErrorInterface, statusCode: number, result?: UserDbModel[]) => void,
+                                     table: string, limit: number, offset: number) => {
   let error: ErrorInterface = {
     type: '',
     field: '',
