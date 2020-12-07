@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { connection } from '../../services/db.service';
-import { ErrorInterface } from '../../utils/api/interfaces/error.interface';
-import { ErrorTypes } from '../../utils/api/enums/error-types.enum';
+import { ErrorInterface } from '../../utils/errors/error.interface';
+import { ErrorTypes } from '../../utils/errors/error.types';
 import { apiSend } from '../../utils/api/api';
 
 export function userDeleteController(req: Request, res: Response) {

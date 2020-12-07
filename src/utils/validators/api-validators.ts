@@ -1,7 +1,7 @@
 import { ValidatorFnType, ValidatorType } from './types/validators-types';
 import { ValidatorInterface, ValidatorResponseInterface } from './interfaces/validator.interface';
-import { ErrorInterface } from '../api/interfaces/error.interface';
-import { ErrorTypes } from '../api/enums/error-types.enum';
+import { ErrorInterface } from '../errors/error.interface';
+import { ErrorTypes } from '../errors/error.types';
 
 export function checkValidatorsAll(validator: ValidatorInterface[], error: ErrorInterface): boolean {
   let isValid = true;

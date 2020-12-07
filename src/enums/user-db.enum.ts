@@ -1,0 +1,15 @@
+export enum UserDbEnum {
+  Id = 'id',
+  Role = 'role',
+  Nickname = 'nickname',
+  Email = 'email',
+  LastsName = 'lastsName',
+  FirsName = 'firsName',
+  ServiceIdsStr = 'serviceIdsStr',
+  CityIdsStr = 'cityIdsStr',
+  Phone = 'phone',
+  Gender = 'gender',
+  Birthday = 'birthday',
+  Avatar = 'avatar',
+  InfoYourself = 'infoYourself',
+}

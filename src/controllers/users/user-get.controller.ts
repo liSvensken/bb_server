@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { connection } from '../../services/db.service';
-import { ErrorInterface } from '../../utils/api/interfaces/error.interface';
+import { ErrorInterface } from '../../utils/errors/error.interface';
 import { apiSend } from '../../utils/api/api';
-import { ErrorTypes } from '../../utils/api/enums/error-types.enum';
+import { ErrorTypes } from '../../utils/errors/error.types';
 
 export function userGetController(req: Request, res: Response) {
   let error: ErrorInterface = {
