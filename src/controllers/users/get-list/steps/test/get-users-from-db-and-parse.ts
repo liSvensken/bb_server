@@ -35,11 +35,12 @@ export const getUsersFromDbAndParse = (callback: (err: ErrorInterface, statusCod
 
         getItemsTableByIds((err, statusCode, result) => {
           if (!err) {
+            console.log(1)
             user.services = result;
             getItemsTableByIds((err, statusCode, result) => {
+              console.log(2)
               if (!err) {
                 user.cities = result;
-                console.log(result)
                 userResponse.push(user);
                 callback(null, 200, userResponse);
               } else {
