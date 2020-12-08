@@ -3,7 +3,7 @@ import { queryCreateRow } from '../../../common/querys/query-create-row';
 import { ErrorTypes } from '../../../../utils/errors/error.types';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserDbEnum } from '../../../../enums/user-db.enum';
+import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
 
 export const step6CreateUser = (callback: (err: ErrorInterface, statusCode: number, result?: any) => void,
                                 user?: UserRegistrationRequest) => {

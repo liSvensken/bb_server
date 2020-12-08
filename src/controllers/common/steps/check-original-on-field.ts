@@ -2,15 +2,14 @@ import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { queryGetRowOnField } from '../querys/query-get-row-on-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 
-let error: ErrorInterface = {
-  type: '',
-  field: '',
-  message: '',
-  status: 0,
-};
-
 export const checkOriginalOnField = (callback: (err: ErrorInterface, statusCode: number) => void,
                                      table: string, field: any, fieldName: string) => {
+  let error: ErrorInterface = {
+    type: '',
+    field: '',
+    message: '',
+    status: 0,
+  };
 
   queryGetRowOnField((err, result) => {
     switch (true) {

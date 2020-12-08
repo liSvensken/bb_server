@@ -2,8 +2,7 @@ import { Response } from 'express';
 import { ErrorInterface } from '../errors/error.interface';
 import { CommonResponse } from '../../controllers/common/interfaces/common-response';
 
-export function apiSend(res: Response, statusCode: number, result: any = null, err: ErrorInterface = null,
-                        totalItems?: number): void {
+export function apiSend(res: Response, statusCode: number, result: any = null, err: ErrorInterface = null, totalItems?: number): void {
   const response: CommonResponse = {
     result: null,
     error: null,

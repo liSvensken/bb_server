@@ -6,7 +6,7 @@ import { emailReg, nicknameReg, phoneReg } from '../../../../utils/regulars';
 import { UserGenderType } from '../../../../types/user-gender.type';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';
-import { UserRequestEnum } from '../../../../enums/user-request.enum';
+import { UserRequestEnum } from '../../../../enums/users-table/user-request.enum';
 
 export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: number) => void,
                                     user?: UserRegistrationRequest) => {

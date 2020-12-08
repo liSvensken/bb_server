@@ -2,7 +2,7 @@ import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRole, UserRoleType } from '../../../../types/user-role.type';
 import { checkFieldAnotherTable } from '../../../common/steps/check-field-another-table';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserRequestEnum } from '../../../../enums/user-request.enum';
+import { UserRequestEnum } from '../../../../enums/users-table/user-request.enum';
 
 export const step4CheckServicesAnotherTable = (callback: (err: ErrorInterface, statusCode: number) => void,
                                                userRole: UserRole, userServiceIds: number[]) => {

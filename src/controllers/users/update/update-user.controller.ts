@@ -6,11 +6,11 @@ import { step4CheckServicesAnotherTable } from './steps/step4-check-services-ano
 import { step5CheckCitiesAnotherTable } from './steps/step5-check-cities-another-table';
 import { step6UpdateFields } from './steps/step6-update-fields';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
-import { UserUpdateRequest } from './interfaces/user-update-request.interface';
+import { UpdateUserRequest } from './interfaces/update-user-request.interface';
 
-export function update(req: Request, res: Response) {
+export function updateUserController(req: Request, res: Response) {
   console.log(req.body)
-  let user: UserUpdateRequest = req.body;
+  let user: UpdateUserRequest = req.body;
 
   const steps = [
     { fn: step1CheckValidForm, params: [user], next: true },

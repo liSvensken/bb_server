@@ -1,4 +1,4 @@
-import { UserRequestEnum } from '../../enums/user-request.enum';
+import { UserRequestEnum } from '../../enums/users-table/user-request.enum';
 
 export const UserFieldsLength = {
   [UserRequestEnum.Nickname]: {

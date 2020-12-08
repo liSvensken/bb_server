@@ -14,11 +14,7 @@ export const checkFieldAnotherTable = (callback: (err: ErrorInterface, statusCod
   let query = '';
 
   field.forEach(elem => {
-    if (!query) {
-      query = `id = ${ elem }`;
-    } else {
-      query += ` OR id = ${ elem }`
-    }
+    query += !query ? `id = ${ elem }` : ` OR id = ${ elem }`;
   })
 
   queryGetRowOnField((err, result) => {

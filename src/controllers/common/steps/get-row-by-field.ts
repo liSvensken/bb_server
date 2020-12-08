@@ -2,8 +2,8 @@ import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { queryGetRowOnField } from '../querys/query-get-row-on-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 
-export const getItemsTableByIds = (callback: (err: ErrorInterface, statusCode: number, result: any) => void,
-                                       anotherTable: string, field: number[], fieldName: string) => {
+export const getRowByField = (callback: (err: ErrorInterface, statusCode: number, result: any[]) => void,
+                              table: string, field: string | number | number[], fieldName: string) => {
   let error: ErrorInterface = {
     type: '',
     field: '',
@@ -13,13 +13,13 @@ export const getItemsTableByIds = (callback: (err: ErrorInterface, statusCode: n
 
   let query = '';
 
-  field.forEach(elem => {
-    if (!query) {
-      query = `id = ${ elem }`;
-    } else {
-      query += ` OR id = ${ elem }`
-    }
-  })
+  if (typeof field === 'object') {
+    field.forEach(elem => {
+      query += !query ? `${ fieldName } = ${ elem }` : ` OR ${ fieldName } = ${ elem }`
+    })
+  } else {
+    query = `${ fieldName } = ${ field }`;
+  }
 
   queryGetRowOnField((err, result) => {
     if (!err) {
@@ -30,5 +30,5 @@ export const getItemsTableByIds = (callback: (err: ErrorInterface, statusCode: n
       error.status = 500;
       callback(error, error.status, null);
     }
-  }, anotherTable, query);
+  }, table, query);
 }

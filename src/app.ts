@@ -1,6 +1,6 @@
 import { initApp, startApp } from './services/app.service';
 import { initConnection } from './services/db.service';
-import { initRoutesServices, initRoutesUsers } from './routes';
+import { initRoutesCities, initRoutesServices, initRoutesUsers } from './routes';
 
 initApp();
 initConnection()
@@ -8,5 +8,6 @@ initConnection()
       startApp(process.env.PORT || 3000);
       initRoutesUsers();
       initRoutesServices();
+      initRoutesCities();
     })
     .catch(err => console.error(err));

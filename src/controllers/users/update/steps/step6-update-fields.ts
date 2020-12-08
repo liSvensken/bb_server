@@ -3,7 +3,7 @@ import { ErrorTypes } from '../../../../utils/errors/error.types';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../../registration/interfaces/user-registration-request.interface';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserRequestEnum } from '../../../../enums/user-request.enum';
+import { UserRequestEnum } from '../../../../enums/users-table/user-request.enum';
 
 export const step6UpdateFields = (callback: (err: any, statusCode: number, result?: any) => void,
                                   user: UserRegistrationRequest, reqParamsId: string) => {

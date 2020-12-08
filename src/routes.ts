@@ -1,19 +1,22 @@
 import { Request, Response } from 'express';
 import { app } from './services/app.service';
-import { getListController } from './controllers/users/get-list/get-list.controller';
-import { userGetController } from './controllers/users/user-get.controller';
+import { getUsersListController } from './controllers/users/get-list/get-users-list.controller';
 import { registrationController } from './controllers/users/registration/registration.controller';
-import { userDeleteController } from './controllers/users/user-delete.controller';
-import { update } from './controllers/users/update/update';
-import { getById } from './controllers/services/get-by-id/get-by-id';
+import { updateUserController } from './controllers/users/update/update-user.controller';
+import { getServicesListController } from './controllers/services/get-list/get-services-list.controllerts';
+import { getUserByIdController } from './controllers/users/get-by-id/get-user-by-id.controller';
+import { getServiceByIdController } from './controllers/services/get-by-id/get-service-by-id.controller';
+import { deleteUserController } from './controllers/users/delete/delete-user.controller';
+import { getCitiesListController } from './controllers/cities/get-list/get-cities-list.controllerts';
+import { getCityByIdController } from './controllers/cities/get-by-id/get-city-by-id.controller';
 
 export function initRoutesUsers(): void {
   app.post('/users', (req: Request, res: Response) => {
-    getListController(req, res);
+    getUsersListController(req, res);
   });
 
   app.get('/users/:id', (req: Request, res: Response) => {
-    // userGetController(req, res);
+    getUserByIdController(req, res);
   });
 
   app.post('/users/create', (req: Request, res: Response) => {
@@ -21,20 +24,30 @@ export function initRoutesUsers(): void {
   })
 
   app.delete('/users/:id', (req: Request, res: Response) => {
-    // userDeleteController(req, res);
+    deleteUserController(req, res);
   });
 
   app.patch('/users/:id', (req: Request, res: Response) => {
-    update(req, res);
+    updateUserController(req, res);
   });
 }
 
 export function initRoutesServices() {
-  app.get('/services', (req: Request, res: Response) => {
-    // servicesGetListController(req, res);
+  app.post('/services', (req: Request, res: Response) => {
+    getServicesListController(req, res);
   });
 
   app.get('/services/:id', (req: Request, res: Response) => {
-    getById(req, res);
+    getServiceByIdController(req, res);
+  });
+}
+
+export function initRoutesCities() {
+  app.post('/cities', (req: Request, res: Response) => {
+    getCitiesListController(req, res);
+  });
+
+  app.get('/cities/:id', (req: Request, res: Response) => {
+    getCityByIdController(req, res);
   });
 }
