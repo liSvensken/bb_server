@@ -18,19 +18,24 @@ export const checkFieldAnotherTable = (callback: (err: ErrorInterface, statusCod
   })
 
   queryGetRowOnField((err, result) => {
-    if (err) {
-      error.type = ErrorTypes.SqlError;
-      error.message = err.message;
-      error.status = 500;
-      callback(error, error.status);
-    } else if (result.length !== field.length) {
-      error.type = ErrorTypes.InvalidParam;
-      error.field = fieldName;
-      error.message = `The selected values for the "${ error.field }" field do not exist`;
-      error.status = 403;
-      callback(error, error.status);
-    } else {
-      callback(null, 200);
+    switch (true) {
+      case !!(err):
+        error.type = ErrorTypes.SqlError;
+        error.message = err.message;
+        error.status = 500;
+        callback(error, error.status);
+        break;
+
+      case result.length !== field.length:
+        error.type = ErrorTypes.InvalidParam;
+        error.field = fieldName;
+        error.message = `The selected values for the "${ error.field }" field do not exist`;
+        error.status = 403;
+        callback(error, error.status);
+        break;
+
+      default:
+        callback(null, 200);
     }
   }, anotherTable, query);
 }

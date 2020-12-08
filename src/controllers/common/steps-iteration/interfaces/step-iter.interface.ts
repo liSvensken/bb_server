@@ -1,5 +1,5 @@
 export interface StepIterInterface {
-  fn: any,
-  params: any[],
-  next: boolean
+  fn: any;
+  params: any[];
+  last?: boolean;
 }

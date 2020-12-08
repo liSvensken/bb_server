@@ -17,7 +17,7 @@ export function getServicesListController(req: Request, res: Response) {
       step2GetTotalItems((err, statusCode, result) => {
         if (!err) {
           responseTotalItems = result;
-          apiSend(res, statusCode, responseResult, null, responseTotalItems);
+          apiSend(res, 200, responseResult, null, responseTotalItems);
         } else {
           apiSend(res, statusCode, null, err);
         }

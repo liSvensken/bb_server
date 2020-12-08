@@ -6,8 +6,8 @@ export function getCityByIdController(req: Request, res: Response) {
   const reqId: string = req.params.id;
 
   const stepsIter = [
-    { fn: step1GetCity, params: [reqId], next: false }
+    { fn: step1GetCity, params: [reqId], last: true }
   ]
 
-  stepsIteration(stepsIter, res);
+  // stepsIteration(stepsIter, res);
 }

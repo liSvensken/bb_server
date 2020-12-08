@@ -16,25 +16,25 @@ export const step6CreateUser = (callback: (err: ErrorInterface, statusCode: numb
 
   let valueQuery = `'${ user.role }', '${ user.nickname }', '${ user.email }'`;
 
-  const addValueQueryOptionalField = (field: any) => {
+  const addValue = (field: any) => {
     if (typeof field === 'object') {
       field = JSON.stringify(field);
     }
     valueQuery += field ? `, '${ field }'` : `, ${ null }`;
   }
-  addValueQueryOptionalField(user.lastsName);
-  addValueQueryOptionalField(user.firsName);
-  addValueQueryOptionalField(user.serviceIds);
-  addValueQueryOptionalField(user.cityIds);
-  addValueQueryOptionalField(user.phone);
-  addValueQueryOptionalField(user.gender);
-  addValueQueryOptionalField(user.birthday);
-  addValueQueryOptionalField(user.avatar);
-  addValueQueryOptionalField(user.infoYourself);
+  addValue(user.lastsName);
+  addValue(user.firsName);
+  addValue(user.serviceIds);
+  addValue(user.cityIds);
+  addValue(user.phone);
+  addValue(user.gender);
+  addValue(user.birthday);
+  addValue(user.avatar);
+  addValue(user.infoYourself);
 
   queryCreateRow((err, result) => {
         if (!err) {
-          callback(null, null, result);
+          callback(null, 200, result);
         } else {
           error.type = ErrorTypes.SqlError;
           error.message = err.message;

@@ -10,7 +10,7 @@ export function getUserByIdController(req: Request, res: Response) {
     if (!err) {
       step2ParseInUserResponse((err, statusCode, result) => {
         if (!err) {
-          apiSend(res, statusCode, result, null);
+          apiSend(res, 200, result, null);
         } else {
           apiSend(res, statusCode, null, err);
         }

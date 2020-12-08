@@ -6,8 +6,8 @@ export function getServiceByIdController(req: Request, res: Response) {
   const reqId: string = req.params.id;
 
   const stepsIter = [
-    { fn: step1GetService, params: [reqId], next: false }
+    { fn: step1GetService, params: [reqId], last: true }
   ]
 
-  stepsIteration(stepsIter, res);
+  // stepsIteration(stepsIter, res);
 }

@@ -9,19 +9,18 @@ import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { UpdateUserRequest } from './interfaces/update-user-request.interface';
 
 export function updateUserController(req: Request, res: Response) {
-  console.log(req.body)
   let user: UpdateUserRequest = req.body;
 
   const steps = [
-    { fn: step1CheckValidForm, params: [user], next: true },
-    { fn: step2CheckOriginalNickname, params: [user.nickname], next: true },
-    { fn: step3CheckOriginalEmail, params: [user.email], next: true },
-    { fn: step4CheckServicesAnotherTable, params: [user.role, user.serviceIds], next: true },
-    { fn: step5CheckCitiesAnotherTable, params: [user.cityIds], next: true },
-    { fn: step6UpdateFields, params: [user, req.params.id], next: false }
+    { fn: step1CheckValidForm, params: [user]},
+    { fn: step2CheckOriginalNickname, params: [user.nickname] },
+    { fn: step3CheckOriginalEmail, params: [user.email] },
+    { fn: step4CheckServicesAnotherTable, params: [user.role, user.serviceIds] },
+    { fn: step5CheckCitiesAnotherTable, params: [user.cityIds]},
+    { fn: step6UpdateFields, params: [user, req.params.id], last: true }
   ];
 
-  stepsIteration(steps, res);
+  // stepsIteration(steps, res);
 }
 
 

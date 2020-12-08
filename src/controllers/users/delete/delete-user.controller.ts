@@ -6,8 +6,8 @@ export function deleteUserController(req: Request, res: Response) {
   const reqId: string = req.params.id;
 
   const stepsIter = [
-    { fn: step1DeleteUser, params: [reqId], next: false }
+    { fn: step1DeleteUser, params: [reqId], last: true }
   ]
 
-  stepsIteration(stepsIter, res);
+  // stepsIteration(stepsIter, res);
 }
