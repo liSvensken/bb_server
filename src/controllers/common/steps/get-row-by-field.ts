@@ -25,7 +25,7 @@ export const getRowByField = (callback: (err: ErrorInterface, statusCode: number
     if (!err) {
       callback(null, 200, result)
     } else {
-      error.type = ErrorTypes.SqlError;
+      error.type = ErrorTypes.InternalServerError;
       error.message = err.message;
       error.status = 500;
       callback(error, error.status, null);

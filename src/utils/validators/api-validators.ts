@@ -25,35 +25,35 @@ export function checkValidator(validator: ValidatorInterface, error: ErrorInterf
       if (!isValid) {
         switch (validResponse.key) {
           case 'required':
-            error.type = ErrorTypes.InvalidParam;
+            error.type = ErrorTypes.BadRequest;
             error.field = validator.key;
             error.message = `field "${ validator.key }" is empty when it is required`;
-            error.status = 403;
+            error.status = 400;
             break;
 
           case 'minLength':
-            error.type = ErrorTypes.InvalidParam;
+            error.type = ErrorTypes.BadRequest;
             error.field = validator.key;
             error.message = `field "${ validator.key }" length is less than the minimum length`;
-            error.status = 413;
+            error.status = 400;
             break;
 
           case 'maxLength':
-            error.type = ErrorTypes.InvalidParam;
+            error.type = ErrorTypes.BadRequest;
             error.field = validator.key;
             error.message = `field "${ validator.key }" length exceeds the maximum length`;
-            error.status = 413;
+            error.status = 400;
             break;
 
           case 'matchEnum':
-            error.type = ErrorTypes.InvalidParam;
+            error.type = ErrorTypes.BadRequest;
             error.field = validator.key;
             error.message = `field "${ validator.key }" doesn't match the enum`;
             error.status = 400;
             break;
 
           case 'regular':
-            error.type = ErrorTypes.InvalidParam;
+            error.type = ErrorTypes.BadRequest;
             error.field = validator.key;
             error.message = `field "${ validator.key }" doesn't match its type`;
             error.status = 400;

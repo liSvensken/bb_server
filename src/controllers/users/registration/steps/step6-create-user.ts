@@ -4,45 +4,12 @@ import { ErrorTypes } from '../../../../utils/errors/error.types';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
+import { StepsResultRegistration } from '../interfaces/steps-result-registration';
+import { createRow } from '../../../common/steps/create-row';
 
-export const step6CreateUser = (callback: (err: ErrorInterface, statusCode: number, result?: any) => void,
-                                user?: UserRegistrationRequest) => {
-  let error: ErrorInterface = {
-    type: '',
-    field: '',
-    message: '',
-    status: 0,
-  };
-
-  let valueQuery = `'${ user.role }', '${ user.nickname }', '${ user.email }'`;
-
-  const addValue = (field: any) => {
-    if (typeof field === 'object') {
-      field = JSON.stringify(field);
-    }
-    valueQuery += field ? `, '${ field }'` : `, ${ null }`;
-  }
-  addValue(user.lastsName);
-  addValue(user.firsName);
-  addValue(user.serviceIds);
-  addValue(user.cityIds);
-  addValue(user.phone);
-  addValue(user.gender);
-  addValue(user.birthday);
-  addValue(user.avatar);
-  addValue(user.infoYourself);
-
-  queryCreateRow((err, result) => {
-        if (!err) {
-          callback(null, 200, result);
-        } else {
-          error.type = ErrorTypes.SqlError;
-          error.message = err.message;
-          error.status = 500;
-          callback(error, error.status);
-        }
-      }, TablesEnum.Users,
-      `
+export const step6CreateUser = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultRegistration) => void,
+                                user: UserRegistrationRequest, stepsResults: StepsResultRegistration) => {
+  const fieldsNameStr = `
       ${ UserDbEnum.Role }, 
       ${ UserDbEnum.Nickname }, 
       ${ UserDbEnum.Email }, 
@@ -55,8 +22,16 @@ export const step6CreateUser = (callback: (err: ErrorInterface, statusCode: numb
       ${ UserDbEnum.Birthday }, 
       ${ UserDbEnum.Avatar }, 
       ${ UserDbEnum.InfoYourself }
-      `,
-      valueQuery)
+      `;
+
+  createRow((err, statusCode, result) => {
+      if (!err) {
+          stepsResults.step6CreateUser = result;
+          callback(null, 200, stepsResults);
+      } else {
+          callback(err, statusCode, null);
+      }
+  }, TablesEnum.Users, fieldsNameStr, user);
 }
 
 

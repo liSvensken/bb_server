@@ -1,29 +1,25 @@
 import { Request, Response } from 'express';
 import { GetCitiesListRequest } from './interfaces/get-cities-list-request.interface';
 import { step1GetCitiesFromDb } from './steps/step1-get-cities-from-db';
-import { apiSend } from '../../../utils/api/api-send';
 import { step2GetTotalItems } from './steps/step2-get-total-items';
-import { CityModel } from '../../../models/city/city.model';
+import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
+import { StepsResultGetCitiesList } from './interfaces/steps-result-get-cities-list';
+import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
+import { step3SendApi } from './steps/step3-send-api';
 
 export function getCitiesListController(req: Request, res: Response) {
   let reqBody: GetCitiesListRequest = req.body;
 
-  let responseResult: CityModel[];
-  let responseTotalItems: number;
+  const stepsIter: StepIterInterface[] = [
+    { fn: step1GetCitiesFromDb, params: [reqBody.limit, reqBody.offset] },
+    { fn: step2GetTotalItems, params: [] },
+    { fn: step3SendApi, params: [], last: true }
+  ]
 
-  step1GetCitiesFromDb((err, statusCode, result) => {
-    if (!err) {
-      responseResult = result;
-      step2GetTotalItems((err, statusCode, result) => {
-        if (!err) {
-          responseTotalItems = result;
-          apiSend(res, 200, responseResult, null, responseTotalItems);
-        } else {
-          apiSend(res, statusCode, null, err);
-        }
-      })
-    } else {
-      apiSend(res, statusCode, null, err);
-    }
-  }, reqBody.limit, reqBody.offset)
+  const stepsResults: StepsResultGetCitiesList = {
+    step1GetCitiesFromDb: [],
+    step2GetTotalItems: null
+  }
+
+  stepsIteration(stepsIter, res, stepsResults);
 }

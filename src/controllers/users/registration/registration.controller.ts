@@ -8,6 +8,8 @@ import { step6CreateUser } from './steps/step6-create-user';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { UserRegistrationRequest } from './interfaces/user-registration-request.interface';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
+import { StepsResultRegistration } from './interfaces/steps-result-registration';
+import { step7SendApi } from './steps/step7-send-api';
 
 export function registrationController(req: Request, res: Response) {
   let user: UserRegistrationRequest = req.body;
@@ -18,9 +20,14 @@ export function registrationController(req: Request, res: Response) {
     { fn: step3CheckOriginalEmail, params: [user.email] },
     { fn: step4CheckServicesAnotherTable, params: [user.role, user.serviceIds] },
     { fn: step5CheckCitiesAnotherTable, params: [user.cityIds] },
-    { fn: step6CreateUser, params: [user], last: true }
+    { fn: step6CreateUser, params: [user] },
+    { fn: step7SendApi, params: [], last: true }
   ];
 
-  // stepsIteration(stepsIter, res);
+  const stepsResults: StepsResultRegistration = {
+    step6CreateUser: ''
+  }
+
+  stepsIteration(stepsIter, res, stepsResults);
 }
 

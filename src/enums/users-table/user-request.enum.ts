@@ -1,4 +1,4 @@
-export enum UserRequestEnum {
+export enum UserDbEnum {
   Id = 'id',
   Role = 'role',
   Nickname = 'nickname',

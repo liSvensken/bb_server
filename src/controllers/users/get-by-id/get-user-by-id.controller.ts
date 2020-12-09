@@ -1,22 +1,28 @@
 import { Request, Response } from 'express';
-import { apiSend } from '../../../utils/api/api-send';
-import { step1GetUser } from './steps/step1-get-user';
+import { step1GetUserFromDb } from './steps/step1-get-user-from-db';
 import { step2ParseInUserResponse } from './steps/step2-parse-in-user-response';
+import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
+import { StepsResultGetUser } from './interfaces/steps-result.interface';
+import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
+import { step3ParseInServicesResponse } from './steps/step3-parse-in-services-response';
+import { step4ParseInCitiesResponse } from './steps/step4-parse-in-cities-response';
+import { step6SendApi } from './steps/step6-send-api';
 
 export function getUserByIdController(req: Request, res: Response) {
-  const reqId: string = req.params.id;
+  const reqId: number = JSON.parse(req.params.id);
 
-  step1GetUser((err, statusCode, result) => {
-    if (!err) {
-      step2ParseInUserResponse((err, statusCode, result) => {
-        if (!err) {
-          apiSend(res, 200, result, null);
-        } else {
-          apiSend(res, statusCode, null, err);
-        }
-      }, result)
-    } else {
-      apiSend(res, statusCode, null, err);
-    }
-  }, reqId)
+  const stepsIter: StepIterInterface[] = [
+    { fn: step1GetUserFromDb, params: [reqId] },
+    { fn: step2ParseInUserResponse, params: [] },
+    { fn: step3ParseInServicesResponse, params: [] },
+    { fn: step4ParseInCitiesResponse, params: [] },
+    { fn: step6SendApi, params: [], last: true },
+  ]
+
+  const stepsResults: StepsResultGetUser = {
+    step1GetUserFromDb: [],
+    step2ParseInUserResponse: []
+  }
+
+  stepsIteration(stepsIter, res, stepsResults);
 }

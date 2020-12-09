@@ -14,17 +14,17 @@ export const checkOriginalOnField = (callback: (err: ErrorInterface, statusCode:
   queryGetRowOnField((err, result) => {
     switch (true) {
       case !!(err):
-        error.type = ErrorTypes.SqlError;
+        error.type = ErrorTypes.InternalServerError;
         error.message = err.message;
         error.status = 500;
         callback(error, error.status);
         break;
 
       case !!(Object.keys(result).length):
-        error.type = ErrorTypes.InvalidParam;
+        error.type = ErrorTypes.BadRequest;
         error.field = fieldName;
-        error.message = `user with field "${ error.field }" already exists`;
-        error.status = 403;
+        error.message = `${ table } with field "${ error.field }" already exists`;
+        error.status = 400;
         callback(error, error.status);
         break;
 

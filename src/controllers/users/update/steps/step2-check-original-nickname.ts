@@ -1,13 +1,22 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { checkOriginalOnField } from '../../../common/steps/check-original-on-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserRequestEnum } from '../../../../enums/users-table/user-request.enum';
+import { UserDbEnum } from '../../../../enums/users-table/user-request.enum';
+import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user';
+import { UserRegistrationRequest } from '../../registration/interfaces/user-registration-request.interface';
 
-export const step2CheckOriginalNickname = (callback: (err: ErrorInterface, statusCode: number) => void,
-                                           userNickname: string) => {
+export const step2CheckOriginalNickname = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
+                                           userNickname: string, stepsResults: StepsResultUpdateUser) => {
+
   if (userNickname) {
-    checkOriginalOnField(callback, TablesEnum.Users, userNickname, UserRequestEnum.Nickname);
+    checkOriginalOnField((err, statusCode) => {
+      if (!err) {
+        callback(null, 200, stepsResults);
+      } else {
+        callback(err, statusCode, null);
+      }
+    }, TablesEnum.Users, userNickname, UserDbEnum.Nickname);
   } else {
-    callback(null, 200);
+    callback(null, 200, stepsResults);
   }
 }

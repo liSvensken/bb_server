@@ -1,4 +1,4 @@
-export interface CommonGetRequest {
+export interface GetRequest {
   limit?: number;
   offset?: number;
 }

@@ -2,8 +2,8 @@ import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { queryGetRowOnField } from '../querys/query-get-row-on-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 
-export const checkFieldAnotherTable = (callback: (err: ErrorInterface, statusCode: number) => void,
-                                       anotherTable: string, field: number[], fieldName: string) => {
+export const checkFieldsAnotherTable = (callback: (err: ErrorInterface, statusCode: number) => void,
+                                        anotherTable: string, fieldsValuesArr: number[], fieldsName: string, tableName: string) => {
   let error: ErrorInterface = {
     type: '',
     field: '',
@@ -13,24 +13,24 @@ export const checkFieldAnotherTable = (callback: (err: ErrorInterface, statusCod
 
   let query = '';
 
-  field.forEach(elem => {
-    query += !query ? `id = ${ elem }` : ` OR id = ${ elem }`;
+  fieldsValuesArr.forEach(elem => {
+    query += !query ? `${ fieldsName } = ${ elem }` : ` OR ${ fieldsName } = ${ elem }`;
   })
 
   queryGetRowOnField((err, result) => {
     switch (true) {
       case !!(err):
-        error.type = ErrorTypes.SqlError;
+        error.type = ErrorTypes.InternalServerError;
         error.message = err.message;
         error.status = 500;
         callback(error, error.status);
         break;
 
-      case result.length !== field.length:
-        error.type = ErrorTypes.InvalidParam;
-        error.field = fieldName;
+      case result.length !== fieldsValuesArr.length:
+        error.type = ErrorTypes.NotFound;
+        error.field = tableName;
         error.message = `The selected values for the "${ error.field }" field do not exist`;
-        error.status = 403;
+        error.status = 404;
         callback(error, error.status);
         break;
 

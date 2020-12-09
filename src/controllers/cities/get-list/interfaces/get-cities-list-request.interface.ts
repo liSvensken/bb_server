@@ -1,4 +1,4 @@
-import { CommonGetRequest } from '../../../common/interfaces/common-get-request.interface';
+import { GetRequest } from '../../../common/interfaces/get-request.interface';
 
-export interface GetCitiesListRequest extends CommonGetRequest {
+export interface GetCitiesListRequest extends GetRequest {
 }

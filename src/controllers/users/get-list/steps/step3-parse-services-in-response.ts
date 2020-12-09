@@ -1,22 +1,15 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { StepsResult } from '../interfaces/steps-result';
-import { getRowByField } from '../../../common/steps/get-row-by-field';
-import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { ServicesDbEnum } from '../../../../enums/services-table/services-db.enum';
+import { StepsResultGetUsersList } from '../interfaces/steps-result-get-users-list';
+import { parseServicesInResponse } from '../../../common/steps/user/parse-services-in-response';
 
-export const step3ParseServicesInResponse = (callback: (err: ErrorInterface, statusCode: number, stepsResults?: StepsResult) => void,
-                                             stepsResults: StepsResult) => {
-  stepsResults.step1GetUsersFromDb.forEach((userDb, idx) => {
-    if (userDb.serviceIdsStr) {
-      const serviceIds: number = JSON.parse(userDb.serviceIdsStr);
-      getRowByField((err, statusCode, result) => {
-        if (!err) {
-          stepsResults.step2ParseUsersInResponse[idx].services = result;
-          callback(null, 200, stepsResults);
-        } else {
-          callback(err, statusCode, null);
-        }
-      }, TablesEnum.Services, serviceIds, ServicesDbEnum.Id)
+export const step3ParseServicesInResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,
+                                             stepsResults: StepsResultGetUsersList) => {
+  parseServicesInResponse((err, statusCode, userRes) => {
+    if (!err) {
+      stepsResults.step2ParseUsersInResponse = userRes;
+      callback(null, 200, stepsResults);
+    } else {
+      callback(err, statusCode, null);
     }
-  })
+  }, stepsResults.step1GetUsersFromDb, stepsResults.step2ParseUsersInResponse);
 }
