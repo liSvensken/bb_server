@@ -1,8 +1,12 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { queryGetRowList } from '../querys/query-get-row-list';
 import { ErrorTypes } from '../../../utils/errors/error.types';
+import { UserDbModel } from '../../../models/user/user-db.model';
+import { ServiceModel } from '../../../models/service/service.model';
+import { CityModel } from '../../../models/city/city.model';
 
-export const getRowsList = (callback: (err: ErrorInterface, statusCode: number, result?: any[]) => void,
+export const getRowsList =
+    (callback: (err: ErrorInterface, statusCode: number, result: UserDbModel[] | ServiceModel[] | CityModel[]) => void,
                             table: string, limit: number, offset: number) => {
   let error: ErrorInterface = {
     type: '',

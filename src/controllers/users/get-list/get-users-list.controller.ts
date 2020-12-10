@@ -5,7 +5,7 @@ import { step3ParseServicesInResponse } from './steps/step3-parse-services-in-re
 import { step5GetTotalItems } from './steps/step5-get-total-items';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
-import { StepsResultGetUsersList } from './interfaces/steps-result-get-users-list';
+import { StepsResultGetUsersList } from './interfaces/steps-result-get-users-list.interface';
 import { step2ParseUsersInResponse } from './steps/step2-parse-users-in-response';
 import { step4ParseCitiesInResponse } from './steps/step4-parse-cities-in-response';
 import { step6SendApi } from './steps/step6-send-api';

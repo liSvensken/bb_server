@@ -1,8 +1,9 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { queryDeleteRowOnField } from '../querys/query-delete-row-on-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
+import { SqlResult } from '../interfaces/sql-result.interface.';
 
-export const deleteRowByField = (callback: (err: ErrorInterface, statusCode: number, result: any[]) => void,
+export const deleteRowByField = (callback: (err: ErrorInterface, statusCode: number, result: SqlResult) => void,
                                  table: string, field: string | number, fieldName: string) => {
   let error: ErrorInterface = {
     type: '',

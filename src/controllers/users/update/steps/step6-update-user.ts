@@ -2,13 +2,14 @@ import { UserRegistrationRequest } from '../../registration/interfaces/user-regi
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { updateRow } from '../../../common/steps/update-row';
 import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
-import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user';
+import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
+import { ErrorInterface } from '../../../../utils/errors/error.interface';
 
-export const step6UpdateUser = (callback: (err: any, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
+export const step6UpdateUser = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
                                 user: UserRegistrationRequest, reqParamsId: string, stepsResults: StepsResultUpdateUser) => {
   let updateFieldStr = '';
 
-  const addQueryFieldsPatch = (field: any, fieldName: string) => {
+  const addQueryFieldsPatch = (field: string | number[] | number, fieldName: string) => {
     if (field) {
       updateFieldStr += !updateFieldStr ? `${ fieldName } = '${ field }'` : `, ${ fieldName } = '${ field }'`;
     }

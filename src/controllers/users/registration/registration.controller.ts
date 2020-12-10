@@ -8,7 +8,7 @@ import { step6CreateUser } from './steps/step6-create-user';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { UserRegistrationRequest } from './interfaces/user-registration-request.interface';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
-import { StepsResultRegistration } from './interfaces/steps-result-registration';
+import { StepsResultRegistration } from './interfaces/steps-result-registration.interface';
 import { step7SendApi } from './steps/step7-send-api';
 
 export function registrationController(req: Request, res: Response) {
@@ -25,7 +25,7 @@ export function registrationController(req: Request, res: Response) {
   ];
 
   const stepsResults: StepsResultRegistration = {
-    step6CreateUser: ''
+    step6CreateUser: null
   }
 
   stepsIteration(stepsIter, res, stepsResults);

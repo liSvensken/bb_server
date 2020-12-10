@@ -3,11 +3,12 @@ import { getRowByField } from '../../../common/steps/get-row-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
 import { StepsResultGetUser } from '../interfaces/steps-result.interface';
+import { isUsersDb } from '../../../../models/user/check-is-models/check-is-users-db';
 
 export const step1GetUserFromDb = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUser) => void,
                                    id: number, stepsResults: StepsResultGetUser) => {
   getRowByField((err, statusCode, result) => {
-    if (!err) {
+    if (!err && isUsersDb(result)) {
       stepsResults.step1GetUserFromDb = result;
       callback(null, 200, stepsResults);
     }

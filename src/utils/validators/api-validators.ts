@@ -2,6 +2,8 @@ import { ValidatorFnType, ValidatorType } from './types/validators-types';
 import { ValidatorInterface, ValidatorResponseInterface } from './interfaces/validator.interface';
 import { ErrorInterface } from '../errors/error.interface';
 import { ErrorTypes } from '../errors/error.types';
+import { UserRole } from '../../types/user-role.type';
+import { UserGender } from '../../types/user-gender.type';
 
 export function checkValidatorsAll(validator: ValidatorInterface[], error: ErrorInterface): boolean {
   let isValid = true;
@@ -67,15 +69,15 @@ export function checkValidator(validator: ValidatorInterface, error: ErrorInterf
 }
 
 export class Validators {
-  static required: ValidatorType = (value: any): ValidatorResponseInterface => {
+  static required: ValidatorType = (value: string | number | number[]): ValidatorResponseInterface => {
     return {
       key: 'required',
-      isValid: !!value && value !== 0 && value !== ''
+      isValid: !!value // && value !== 0 && value !== ''
     };
   }
 
   static minLength: ValidatorFnType = (num: number): ValidatorType => {
-    return (value: any): ValidatorResponseInterface => {
+    return (value: string | number[]): ValidatorResponseInterface => {
       if (value) {
         return {
           key: 'minLength',
@@ -86,7 +88,7 @@ export class Validators {
   }
 
   static maxLength: ValidatorFnType = (num: number): ValidatorType => {
-    return (value: any): ValidatorResponseInterface => {
+    return (value: string | number[]): ValidatorResponseInterface => {
       if (value) {
         return {
           key: 'maxLength',
@@ -97,7 +99,7 @@ export class Validators {
   }
 
   static matchEnum: ValidatorFnType = (en: any): ValidatorType => {
-    return (value: string): ValidatorResponseInterface => {
+    return (value: UserRole | UserGender): ValidatorResponseInterface => {
       if (value) {
         return {
           key: 'matchEnum ',
@@ -107,7 +109,7 @@ export class Validators {
     }
   }
 
-  static regular: ValidatorFnType = (reg: any): ValidatorType => {
+  static regular: ValidatorFnType = (reg: RegExp): ValidatorType => {
     return (value: any): ValidatorResponseInterface => {
       if (value) {
         return {

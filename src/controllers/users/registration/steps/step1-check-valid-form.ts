@@ -7,7 +7,7 @@ import { UserGenderType } from '../../../../types/user-gender.type';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';
 import { UserDbEnum } from '../../../../enums/users-table/user-request.enum';
-import { StepsResultRegistration } from '../interfaces/steps-result-registration';
+import { StepsResultRegistration } from '../interfaces/steps-result-registration.interface';
 
 export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultRegistration) => void,
                                     user: UserRegistrationRequest, stepsResults: StepsResultRegistration) => {

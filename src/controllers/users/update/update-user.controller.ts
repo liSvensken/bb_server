@@ -7,7 +7,7 @@ import { step5CheckCitiesAnotherTable } from './steps/step5-check-cities-another
 import { step6UpdateUser } from './steps/step6-update-user';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { UpdateUserRequest } from './interfaces/update-user-request.interface';
-import { StepsResultUpdateUser } from './interfaces/steps-result-update-user';
+import { StepsResultUpdateUser } from './interfaces/steps-result-update-user.interface';
 import { step7SendApi } from './steps/step7-send-api';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
 
@@ -25,7 +25,7 @@ export function updateUserController(req: Request, res: Response) {
   ];
 
   const stepsResults: StepsResultUpdateUser = {
-    step6UpdateUser: ''
+    step6UpdateUser: null
   }
 
   stepsIteration(steps, res, stepsResults);

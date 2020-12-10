@@ -1,8 +1,9 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { queryCreateRow } from '../querys/query-create-row';
 import { ErrorTypes } from '../../../utils/errors/error.types';
+import { SqlResult } from '../interfaces/sql-result.interface.';
 
-export const createRow = (callback: (error: ErrorInterface, statusCode: number, result: any) => void,
+export const createRow = (callback: (error: ErrorInterface, statusCode: number, result: SqlResult) => void,
                           tableName: string, fieldsNameStr: string, fieldsValue: object) => {
   let error: ErrorInterface = {
     type: '',
@@ -14,7 +15,7 @@ export const createRow = (callback: (error: ErrorInterface, statusCode: number, 
   let fieldsValueStr = '';
 
   Object.keys(fieldsValue).forEach(key => {
-    let fieldValue: any = fieldsValue[key as keyof object];
+    let fieldValue: number | number[] | string = fieldsValue[key as keyof object];
 
     switch (true) {
       case !fieldValue:

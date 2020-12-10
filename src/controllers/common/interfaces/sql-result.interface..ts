@@ -1,4 +1,4 @@
-export interface DeleteResponse {
+export interface SqlResult {
   affectedRows: number;
   changedRows: number;
   fieldCount: number;

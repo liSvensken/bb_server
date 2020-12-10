@@ -6,10 +6,10 @@ import { UserGenderType } from '../../../../types/user-gender.type';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../../registration/interfaces/user-registration-request.interface';
 import { UserDbEnum } from '../../../../enums/users-table/user-request.enum';
-import { StepsResultRegistration } from '../../registration/interfaces/steps-result-registration';
-import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user';
+import { StepsResultRegistration } from '../../registration/interfaces/steps-result-registration.interface';
+import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
 
-export const step1CheckValidForm = (callback: (err: any, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
+export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
                                     user: UserRegistrationRequest, stepsResults: StepsResultUpdateUser) => {
   let error: ErrorInterface = {
     type: '',

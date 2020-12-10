@@ -4,7 +4,7 @@ import { ErrorTypes } from '../../../../utils/errors/error.types';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
-import { StepsResultRegistration } from '../interfaces/steps-result-registration';
+import { StepsResultRegistration } from '../interfaces/steps-result-registration.interface';
 import { createRow } from '../../../common/steps/create-row';
 
 export const step6CreateUser = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultRegistration) => void,

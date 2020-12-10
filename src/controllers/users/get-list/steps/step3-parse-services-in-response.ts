@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { StepsResultGetUsersList } from '../interfaces/steps-result-get-users-list';
+import { StepsResultGetUsersList } from '../interfaces/steps-result-get-users-list.interface';
 import { parseServicesInResponse } from '../../../common/steps/user/parse-services-in-response';
 
 export const step3ParseServicesInResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,

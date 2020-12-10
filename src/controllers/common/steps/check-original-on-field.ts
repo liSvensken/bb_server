@@ -3,7 +3,7 @@ import { queryGetRowOnField } from '../querys/query-get-row-on-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 
 export const checkOriginalOnField = (callback: (err: ErrorInterface, statusCode: number) => void,
-                                     table: string, field: any, fieldName: string) => {
+                                     table: string, field: string, fieldName: string) => {
   let error: ErrorInterface = {
     type: '',
     field: '',

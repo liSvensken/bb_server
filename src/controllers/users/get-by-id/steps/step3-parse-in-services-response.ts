@@ -5,7 +5,7 @@ import { StepsResultGetUser } from '../interfaces/steps-result.interface';
 
 export const step3ParseInServicesResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUser) => void,
                                              stepsResults: StepsResultGetUser) => {
-  console.log(stepsResults.step1GetUserFromDb)
+
   parseServicesInResponse((err, statusCode, userRes) => {
     if (!err) {
       stepsResults.step2ParseInUserResponse = userRes;

@@ -1,5 +1,5 @@
-import { DeleteResponse } from '../../../common/interfaces/delete-response.interface.';
+import { DeleteUserResponse } from './delete-user-response.interface.';
 
 export interface StepsResultsDeleteUser {
-  step1DeleteUser: any;
+  step1DeleteUser: DeleteUserResponse;
 }

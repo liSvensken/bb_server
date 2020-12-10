@@ -1,4 +1,3 @@
-import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserResponseModel } from '../../../../models/user/user-response.model';
 import { UserDbModel } from '../../../../models/user/user-db.model';
 
