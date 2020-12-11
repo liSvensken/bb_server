@@ -1,5 +1,5 @@
-import { ServiceModel } from '../../../../models/service/service.model';
+import { GetServiceResponse } from './get-service-response.interface';
 
 export interface StepsResultGetService {
-  step1GetService: ServiceModel[]
+  step1GetService: GetServiceResponse
 }

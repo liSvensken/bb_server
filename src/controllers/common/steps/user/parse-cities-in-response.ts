@@ -3,7 +3,7 @@ import { UserDbModel } from '../../../../models/user/user-db.model';
 import { UserResponseModel } from '../../../../models/user/user-response.model';
 import { getRowByField } from '../get-row-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { CitiesDbEnum } from '../../../../enums/cities-table/cities-db.enum';
+import { CitiesDbEnum } from '../../../../enums/cities/cities-db.enum';
 import { isCities } from '../../../../models/city/check-is-models/check-is-cities';
 
 

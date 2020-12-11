@@ -1,7 +1,7 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { getRowByField } from '../get-row-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { ServicesDbEnum } from '../../../../enums/services-table/services-db.enum';
+import { ServicesDbEnum } from '../../../../enums/services/services-db.enum';
 import { UserDbModel } from '../../../../models/user/user-db.model';
 import { UserResponseModel } from '../../../../models/user/user-response.model';
 import { isServices } from '../../../../models/service/check-is-models/check-is-services';

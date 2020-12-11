@@ -1,6 +1,6 @@
-import { CityModel } from '../../../../models/city/city.model';
+import { GetCitiesListResponse } from './get-cities-list-response.interface';
 
 export interface StepsResultGetCitiesList {
-  step1GetCitiesFromDb: CityModel[];
+  step1GetCitiesFromDb: GetCitiesListResponse;
   step2GetTotalItems: number;
 }

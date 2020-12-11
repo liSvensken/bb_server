@@ -4,35 +4,13 @@ import { ErrorTypes } from '../../../utils/errors/error.types';
 import { SqlResult } from '../interfaces/sql-result.interface.';
 
 export const createRow = (callback: (error: ErrorInterface, statusCode: number, result: SqlResult) => void,
-                          tableName: string, fieldsNameStr: string, fieldsValue: object) => {
+                          tableName: string, fieldsNameStr: string, fieldsValueStr: string) => {
   let error: ErrorInterface = {
     type: '',
     field: '',
     message: '',
     status: 0,
   };
-
-  let fieldsValueStr = '';
-
-  Object.keys(fieldsValue).forEach(key => {
-    let fieldValue: number | number[] | string = fieldsValue[key as keyof object];
-
-    switch (true) {
-      case !fieldValue:
-        fieldValue = null;
-        break;
-
-      case typeof fieldValue === 'string':
-        fieldValue = `'${ fieldValue }'`;
-        break;
-
-      case typeof fieldValue === 'object':
-        fieldValue = `'${ JSON.stringify(fieldValue) }'`;
-        break;
-    }
-
-    fieldsValueStr += !fieldsValueStr ? `${ fieldValue }` : `, ${ fieldValue }`;
-  })
 
   queryCreateRow((err, result) => {
     if (!err) {

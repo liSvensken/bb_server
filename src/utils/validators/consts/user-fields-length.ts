@@ -1,4 +1,4 @@
-import { UserDbEnum } from '../../enums/users-table/user-request.enum';
+import { UserDbEnum } from '../../../enums/users/user-request.enum';
 
 export const UserFieldsLength = {
   [UserDbEnum.Nickname]: {
@@ -8,6 +8,11 @@ export const UserFieldsLength = {
 
   [UserDbEnum.Email]: {
     min: 5,
+    max: 255
+  },
+
+  [UserDbEnum.Password]: {
+    min: 3,
     max: 255
   },
 

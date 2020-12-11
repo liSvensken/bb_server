@@ -2,8 +2,8 @@ import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { ServiceModel } from '../../../../models/service/service.model';
 import { getRowByField } from '../../../common/steps/get-row-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { ServicesDbEnum } from '../../../../enums/services-table/services-db.enum';
-import { CitiesDbEnum } from '../../../../enums/cities-table/cities-db.enum';
+import { ServicesDbEnum } from '../../../../enums/services/services-db.enum';
+import { CitiesDbEnum } from '../../../../enums/cities/cities-db.enum';
 import { StepsResultGetCity } from '../interfaces/steps-result-get-city';
 import { isCities } from '../../../../models/city/check-is-models/check-is-cities';
 

@@ -1,11 +1,11 @@
 import { ValidatorInterface } from '../../../../utils/validators/interfaces/validator.interface';
 import { checkValidatorsAll, Validators } from '../../../../utils/validators/api-validators';
-import { UserFieldsLength } from '../../../../utils/consts/user-fields-length';
+import { UserFieldsLength } from '../../../../utils/validators/consts/user-fields-length';
 import { emailReg, nicknameReg, phoneReg } from '../../../../utils/regulars';
 import { UserGenderType } from '../../../../types/user-gender.type';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../../registration/interfaces/user-registration-request.interface';
-import { UserDbEnum } from '../../../../enums/users-table/user-request.enum';
+import { UserDbEnum } from '../../../../enums/users/user-request.enum';
 import { StepsResultRegistration } from '../../registration/interfaces/steps-result-registration.interface';
 import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
 
@@ -30,6 +30,12 @@ export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: 
       value: user.email,
       validators: [Validators.minLength(UserFieldsLength.email.min),
         Validators.maxLength(UserFieldsLength.email.max), Validators.regular(emailReg)]
+    },
+    {
+      key: UserDbEnum.Password,
+      value: user.password,
+      validators: [Validators.minLength(UserFieldsLength.password.min),
+        Validators.maxLength(UserFieldsLength.password.max), Validators.regular(emailReg)]
     },
     {
       key: UserDbEnum.LastsName,

@@ -1,12 +1,13 @@
-export enum UserDbEnum {
+export enum UserResponseEnum {
   Id = 'id',
   Role = 'role',
   Nickname = 'nickname',
   Email = 'email',
+  Password = 'password',
   LastsName = 'lastsName',
   FirsName = 'firsName',
-  ServiceIds = 'serviceIds',
-  CityIds = 'cityIds',
+  Service = 'service',
+  City = 'city',
   Phone = 'phone',
   Gender = 'gender',
   Birthday = 'birthday',

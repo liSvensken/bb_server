@@ -1,7 +1,7 @@
 import { UserRegistrationRequest } from '../../registration/interfaces/user-registration-request.interface';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { updateRow } from '../../../common/steps/update-row';
-import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
+import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 

@@ -1,7 +1,7 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { getRowByField } from '../../../common/steps/get-row-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserDbEnum } from '../../../../enums/users-table/user-db.enum';
+import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 import { StepsResultGetUser } from '../interfaces/steps-result.interface';
 import { isUsersDb } from '../../../../models/user/check-is-models/check-is-users-db';
 
