@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
-import { queryGetRowOnField } from '../querys/query-get-row-on-field';
+import { queryGetRowByField } from '../querys/query-get-row-by-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 import { UserDbModel } from '../../../models/user/user-db.model';
 import { ServiceModel } from '../../../models/service/service.model';
@@ -26,7 +26,7 @@ export const getRowByField =
     query = `${ fieldName } = ${ field }`;
   }
 
-  queryGetRowOnField((err, result) => {
+  queryGetRowByField((err, result) => {
     if (!err) {
       callback(null, 200, result)
     } else {

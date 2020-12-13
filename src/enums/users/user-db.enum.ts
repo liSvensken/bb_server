@@ -3,7 +3,7 @@ export enum UserDbEnum {
   Role = 'role',
   Nickname = 'nickname',
   Email = 'email',
-  Password = 'password',
+  PasswordHash = 'passwordHash',
   LastsName = 'lastsName',
   FirsName = 'firsName',
   ServiceIdsStr = 'serviceIdsStr',

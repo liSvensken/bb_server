@@ -10,18 +10,23 @@ export const parseServicesInResponse = (callback: (err: ErrorInterface, statusCo
                                              usersDb: UserDbModel[], usersRes: UserResponseModel[]) => {
 
   usersDb.forEach((elem, idx) => {
-    if (elem.serviceIdsStr) {
-      const serviceIds: number = JSON.parse(elem.serviceIdsStr);
-      getRowByField((err, statusCode, result) => {
-        if (!err && isServices(result)) {
-          usersRes[idx].services = result;
-          if (idx === usersDb.length - 1) {
-            callback(null, 200, usersRes);
+    switch (true) {
+      case !!(elem.serviceIdsStr):
+        const serviceIds: number = JSON.parse(elem.serviceIdsStr);
+        getRowByField((err, statusCode, result) => {
+          if (!err && isServices(result)) {
+            usersRes[idx].services = result;
+            if (idx === usersDb.length - 1) {
+              callback(null, 200, usersRes);
+            }
+          } else {
+            callback(err, statusCode, null);
           }
-        } else {
-          callback(err, statusCode, null);
-        }
-      }, TablesEnum.Services, serviceIds, ServicesDbEnum.Id)
+        }, TablesEnum.Services, serviceIds, ServicesDbEnum.Id)
+        break;
+
+      default:
+        callback(null, 200, usersRes);
     }
   })
 }

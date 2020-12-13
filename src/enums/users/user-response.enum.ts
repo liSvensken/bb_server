@@ -3,7 +3,7 @@ export enum UserResponseEnum {
   Role = 'role',
   Nickname = 'nickname',
   Email = 'email',
-  Password = 'password',
+  PasswordHash = 'passwordHash',
   LastsName = 'lastsName',
   FirsName = 'firsName',
   Service = 'service',

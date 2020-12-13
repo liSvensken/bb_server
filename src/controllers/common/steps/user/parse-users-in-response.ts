@@ -10,7 +10,6 @@ export const parseUsersInResponse = (callback: (usersResponse: UserResponseModel
       id: elem.id ? elem.id : null,
       role: elem.role ? elem.role : null,
       nickname: elem.nickname ? elem.nickname : null,
-      password: elem.password ? elem.password : null,
       email: elem.email ? elem.email : null,
       services: elem.serviceIdsStr ? [] : null,
       cities: elem.cityIdsStr ? [] : null,

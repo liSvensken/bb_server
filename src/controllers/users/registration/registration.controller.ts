@@ -11,9 +11,10 @@ import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-
 import { StepsResultRegistration } from './interfaces/steps-result-registration.interface';
 import { step8SendApi } from './steps/step8-send-api';
 import { step6HashPassword } from './steps/step6-hash-password';
+import { step8CreateToken } from './steps/step8-create-token';
 
 export function registrationController(req: Request, res: Response) {
-  let user: UserRegistrationRequest = req.body;
+  const user: UserRegistrationRequest = req.body;
 
   const stepsIter: StepIterInterface[] = [
     { fn: step1CheckValidForm, params: [user] },
@@ -21,14 +22,16 @@ export function registrationController(req: Request, res: Response) {
     { fn: step3CheckOriginalEmail, params: [user.email] },
     { fn: step4CheckServicesAnotherTable, params: [user.role, user.serviceIds] },
     { fn: step5CheckCitiesAnotherTable, params: [user.cityIds] },
-    { fn: step6HashPassword, params: [user] },
-    { fn: step7CreateUser, params: [] },
+    { fn: step6HashPassword, params: [user.password] },
+    { fn: step7CreateUser, params: [user] },
+    { fn: step8CreateToken, params: [] },
     { fn: step8SendApi, params: [], last: true }
   ];
 
   const stepsResults: StepsResultRegistration = {
     step6HashPassword: null,
-    step7CreateUser: null
+    step7CreateUser: null,
+    step8CreateToken: null
   }
 
   stepsIteration(stepsIter, res, stepsResults);

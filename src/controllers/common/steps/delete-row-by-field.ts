@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
-import { queryDeleteRowOnField } from '../querys/query-delete-row-on-field';
+import { queryDeleteRowByField } from '../querys/query-delete-row-by-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 import { SqlResult } from '../interfaces/sql-result.interface.';
 
@@ -12,7 +12,7 @@ export const deleteRowByField = (callback: (err: ErrorInterface, statusCode: num
     status: 0,
   };
 
-  queryDeleteRowOnField((err, result) => {
+  queryDeleteRowByField((err, result) => {
     if (!err) {
       callback(null, 200, result)
     } else {

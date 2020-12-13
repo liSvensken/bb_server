@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
-import { queryGetRowOnField } from '../querys/query-get-row-on-field';
+import { queryGetRowByField } from '../querys/query-get-row-by-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 
 export const checkFieldsAnotherTable = (callback: (err: ErrorInterface, statusCode: number) => void,
@@ -17,7 +17,7 @@ export const checkFieldsAnotherTable = (callback: (err: ErrorInterface, statusCo
     query += !query ? `${ fieldsName } = ${ elem }` : ` OR ${ fieldsName } = ${ elem }`;
   })
 
-  queryGetRowOnField((err, result) => {
+  queryGetRowByField((err, result) => {
     switch (true) {
       case !!(err):
         error.type = ErrorTypes.InternalServerError;

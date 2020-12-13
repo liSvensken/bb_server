@@ -1,6 +1,6 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
 import { ErrorTypes } from '../../../utils/errors/error.types';
-const bcrypt = require( 'bcrypt' );
+const bcrypt = require('bcrypt');
 
 export const hashPassword = (callback: (err: ErrorInterface, statusCode: number, result: string) => void,
                              password: string) => {

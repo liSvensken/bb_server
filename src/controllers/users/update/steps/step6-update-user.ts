@@ -29,7 +29,6 @@ export const step6UpdateUser = (callback: (err: ErrorInterface, statusCode: numb
 
   updateRow((err, statusCode, result) => {
     if (!err) {
-      console.log(stepsResults)
       stepsResults.step6UpdateUser = result
       callback(null, 200, stepsResults);
     } else {

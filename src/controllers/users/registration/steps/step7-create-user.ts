@@ -1,20 +1,18 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { queryCreateRow } from '../../../common/querys/query-create-row';
-import { ErrorTypes } from '../../../../utils/errors/error.types';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 import { StepsResultRegistration } from '../interfaces/steps-result-registration.interface';
 import { createRow } from '../../../common/steps/create-row';
-import { UserRequestModel } from '../../../../models/user/user-request.model';
 import { UserRole } from '../../../../types/user-role.type';
 import { UserGender } from '../../../../types/user-gender.type';
 
 export const step7CreateUser = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultRegistration) => void,
-                                stepsResults: StepsResultRegistration) => {
+                                user: UserRegistrationRequest, stepsResults: StepsResultRegistration) => {
+  user.password = stepsResults.step6HashPassword;
+
   let fieldsValueStr = ``;
   let fieldsNameStr = ``;
-  const user = stepsResults.step6HashPassword;
 
   const addValue = (field: string | number[] | UserRole | UserGender, fieldNameDb: string) => {
     if (field) {
@@ -29,7 +27,7 @@ export const step7CreateUser = (callback: (err: ErrorInterface, statusCode: numb
   addValue(user.role, UserDbEnum.Role);
   addValue(user.nickname, UserDbEnum.Nickname);
   addValue(user.email, UserDbEnum.Email);
-  addValue(user.password, UserDbEnum.Password);
+  addValue(user.password, UserDbEnum.PasswordHash);
   addValue(user.lastsName, UserDbEnum.LastsName);
   addValue(user.firsName, UserDbEnum.FirsName);
   addValue(user.serviceIds, UserDbEnum.ServiceIdsStr);
@@ -42,7 +40,11 @@ export const step7CreateUser = (callback: (err: ErrorInterface, statusCode: numb
 
   createRow((err, statusCode, result) => {
     if (!err) {
-      stepsResults.step7CreateUser = result;
+      stepsResults.step7CreateUser = {
+        id: result.insertId,
+        role: user.role,
+        nickname: user.nickname
+      }
       callback(null, 200, stepsResults);
     } else {
       callback(err, statusCode, null);

@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
-import { queryUpdateRowOnField } from '../querys/query-update-row-on-field';
+import { queryUpdateRowByField } from '../querys/query-update-row-by-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 import { TablesEnum } from '../../../enums/tables-name.enum';
 import { SqlResult } from '../interfaces/sql-result.interface.';
@@ -14,7 +14,7 @@ export const updateRow = (callback: (err: ErrorInterface, statusCode: number, re
     status: 0,
   };
 
-  queryUpdateRowOnField((err, result) => {
+  queryUpdateRowByField((err, result) => {
     if (!err) {
       switch (true) {
         case !!(err):

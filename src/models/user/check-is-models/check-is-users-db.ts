@@ -6,6 +6,7 @@ export function isUsersDb(param: any[]): param is UserDbModel[] {
         !((elem as UserDbModel).role) ||
         !((elem as UserDbModel).nickname) ||
         !((elem as UserDbModel).email) ||
+        !((elem as UserDbModel).passwordHash) ||
         !((elem as UserDbModel).serviceIdsStr) ||
         !((elem as UserDbModel).cityIdsStr) ||
         !((elem as UserDbModel).lastsName) ||

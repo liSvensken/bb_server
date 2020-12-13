@@ -5,7 +5,6 @@ export interface UserConstFields {
   role: UserRole;
   nickname: string;
   email: string;
-  password: string,
   lastsName?: string;
   firsName?: string;
   phone?: string;

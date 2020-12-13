@@ -2,7 +2,7 @@ import { ValidatorInterface } from '../../../../utils/validators/interfaces/vali
 import { checkValidatorsAll, Validators } from '../../../../utils/validators/api-validators';
 import { UserRoleType } from '../../../../types/user-role.type';
 import { UserFieldsLength } from '../../../../utils/validators/consts/user-fields-length';
-import { emailReg, nicknameReg, phoneReg } from '../../../../utils/regulars';
+import { emailReg, nicknameReg, phoneReg } from '../../../../utils/consts/regulars';
 import { UserGenderType } from '../../../../types/user-gender.type';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../interfaces/user-registration-request.interface';

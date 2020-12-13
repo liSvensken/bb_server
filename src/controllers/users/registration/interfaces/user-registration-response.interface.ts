@@ -1,4 +1,7 @@
-import { SqlResult } from '../../../common/interfaces/sql-result.interface.';
+import { UserRole } from '../../../../types/user-role.type';
 
-export interface UserRegistrationResponse extends SqlResult{
+export interface UserRegistrationResponse {
+  id: number;
+  role: UserRole;
+  nickname: string;
 }
