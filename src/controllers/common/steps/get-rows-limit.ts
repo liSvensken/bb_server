@@ -1,11 +1,11 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
-import { queryGetRowList } from '../querys/query-get-row-list';
+import { queryGetRowsLimit } from '../querys/query-get-rows-limit';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 import { UserDbModel } from '../../../models/user/user-db.model';
 import { ServiceModel } from '../../../models/service/service.model';
 import { CityModel } from '../../../models/city/city.model';
 
-export const getRowsList =
+export const getRowsLimit =
     (callback: (err: ErrorInterface, statusCode: number, result: UserDbModel[] | ServiceModel[] | CityModel[]) => void,
                             table: string, limit: number, offset: number) => {
   let error: ErrorInterface = {
@@ -15,7 +15,7 @@ export const getRowsList =
     status: 0,
   };
 
-  queryGetRowList((err, result) => {
+  queryGetRowsLimit((err, result) => {
     if (!err) {
       callback(null, 200, result)
     } else {

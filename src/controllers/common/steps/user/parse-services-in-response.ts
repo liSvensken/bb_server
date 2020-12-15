@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { getRowByField } from '../get-row-by-field';
+import { getRowsByField } from '../get-rows-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { ServicesDbEnum } from '../../../../enums/services/services-db.enum';
 import { UserDbModel } from '../../../../models/user/user-db.model';
@@ -7,13 +7,13 @@ import { UserResponseModel } from '../../../../models/user/user-response.model';
 import { isServices } from '../../../../models/service/check-is-models/check-is-services';
 
 export const parseServicesInResponse = (callback: (err: ErrorInterface, statusCode: number, userRes: UserResponseModel[]) => void,
-                                             usersDb: UserDbModel[], usersRes: UserResponseModel[]) => {
+                                        usersDb: UserDbModel[], usersRes: UserResponseModel[]) => {
 
   usersDb.forEach((elem, idx) => {
     switch (true) {
       case !!(elem.serviceIdsStr):
         const serviceIds: number = JSON.parse(elem.serviceIdsStr);
-        getRowByField((err, statusCode, result) => {
+        getRowsByField((err, statusCode, result) => {
           if (!err && isServices(result)) {
             usersRes[idx].services = result;
             if (idx === usersDb.length - 1) {
@@ -26,7 +26,9 @@ export const parseServicesInResponse = (callback: (err: ErrorInterface, statusCo
         break;
 
       default:
-        callback(null, 200, usersRes);
+        if (idx === usersDb.length - 1) {
+          callback(null, 200, usersRes);
+        }
     }
   })
 }

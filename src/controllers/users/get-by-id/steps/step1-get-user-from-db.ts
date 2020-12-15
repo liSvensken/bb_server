@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { getRowByField } from '../../../common/steps/get-row-by-field';
+import { getRowsByField } from '../../../common/steps/get-rows-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 import { StepsResultGetUser } from '../interfaces/steps-result.interface';
@@ -7,7 +7,7 @@ import { isUsersDb } from '../../../../models/user/check-is-models/check-is-user
 
 export const step1GetUserFromDb = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUser) => void,
                                    id: number, stepsResults: StepsResultGetUser) => {
-  getRowByField((err, statusCode, result) => {
+  getRowsByField((err, statusCode, result) => {
     if (!err && isUsersDb(result)) {
       stepsResults.step1GetUserFromDb = result;
       callback(null, 200, stepsResults);

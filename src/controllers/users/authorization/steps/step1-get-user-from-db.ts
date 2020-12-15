@@ -1,5 +1,5 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { queryGetRowByField } from '../../../common/querys/query-get-row-by-field';
+import { queryGetRowsByField } from '../../../common/querys/query-get-rows-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 import { StepsResultAuthorization } from '../interfaces/steps-result-authorization.interface';
@@ -18,7 +18,7 @@ export const step1GetUserFromDb = (callback: (err: ErrorInterface, statusCode: n
 
   let queryFields = `${ UserDbEnum.Nickname } = '${ login }' OR ${ UserDbEnum.Email } = '${ login }'`;
 
-  queryGetRowByField((err, result) => {
+  queryGetRowsByField((err, result) => {
     if (!err && isUsersDb(result)) {
       stepsResults.step1GetUserFromDb = result[0];
       callback(null, 200, stepsResults);

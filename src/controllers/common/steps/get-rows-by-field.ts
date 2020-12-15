@@ -1,11 +1,11 @@
 import { ErrorInterface } from '../../../utils/errors/error.interface';
-import { queryGetRowByField } from '../querys/query-get-row-by-field';
+import { queryGetRowsByField } from '../querys/query-get-rows-by-field';
 import { ErrorTypes } from '../../../utils/errors/error.types';
 import { UserDbModel } from '../../../models/user/user-db.model';
 import { ServiceModel } from '../../../models/service/service.model';
 import { CityModel } from '../../../models/city/city.model';
 
-export const getRowByField =
+export const getRowsByField =
     (callback: (err: ErrorInterface, statusCode: number, result:  UserDbModel[] | ServiceModel[] | CityModel[]) => void,
                               table: string, field: string | number | number[], fieldName: string) => {
   let error: ErrorInterface = {
@@ -15,18 +15,18 @@ export const getRowByField =
     status: 0,
   };
 
-  let query = '';
+  let queryCondition = '';
 
   // Если typeof field === Array
   if (typeof field === 'object') {
     field.forEach(elem => {
-      query += !query ? `${ fieldName } = ${ elem }` : ` OR ${ fieldName } = ${ elem }`
+      queryCondition += !queryCondition ? `${ fieldName } = ${ elem }` : ` OR ${ fieldName } = ${ elem }`
     })
   } else {
-    query = `${ fieldName } = ${ field }`;
+    queryCondition = `${ fieldName } = ${ field }`;
   }
 
-  queryGetRowByField((err, result) => {
+  queryGetRowsByField((err, result) => {
     if (!err) {
       callback(null, 200, result)
     } else {
@@ -35,5 +35,5 @@ export const getRowByField =
       error.status = 500;
       callback(error, error.status, null);
     }
-  }, table, query);
+  }, table, queryCondition);
 }

@@ -3,18 +3,18 @@ import { ErrorInterface } from '../errors/error.interface';
 import { CommonResponse } from '../../controllers/common/interfaces/common-response.interface';
 
 export function apiSend(res: Response, statusCode: number, result: any = null, err: ErrorInterface = null,
-                        token?: string, totalItems?: number): void {
+                        totalItems?: number, token?: string): void {
   const response: CommonResponse = {
     result: null,
     error: null,
-    token: null,
     totalItems: null,
+    token: null,
   };
 
   response.result = result;
   response.error = err;
-  response.token = token;
   response.totalItems = totalItems;
+  response.token = token;
   res.status(statusCode);
   res.json(response);
 }

@@ -23,9 +23,9 @@ const stepIteration = (stepValues: IterableIterator<StepIterInterface>, res: Res
         break;
 
       default:
-        step.fn((err: ErrorInterface, statusCode: number, result?: any, token?: string, totalItems?: number) => {
+        step.fn((err: ErrorInterface, statusCode: number, result?: any, totalItems?: number, token?: string) => {
           if (!err) {
-            apiSend(res, statusCode, result, null, token, totalItems);
+            apiSend(res, statusCode, result, null, totalItems, token);
           } else {
             apiSend(res, statusCode, null, err);
           }

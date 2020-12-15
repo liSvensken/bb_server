@@ -1,6 +1,6 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { ServiceModel } from '../../../../models/service/service.model';
-import { getRowByField } from '../../../common/steps/get-row-by-field';
+import { getRowsByField } from '../../../common/steps/get-rows-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { ServicesDbEnum } from '../../../../enums/services/services-db.enum';
 import { CitiesDbEnum } from '../../../../enums/cities/cities-db.enum';
@@ -9,7 +9,7 @@ import { isCities } from '../../../../models/city/check-is-models/check-is-citie
 
 export const step1GetCity = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetCity) => void,
                              id: number, stepsResults: StepsResultGetCity) => {
-  getRowByField((err, statusCode, result) => {
+  getRowsByField((err, statusCode, result) => {
     if (!err && isCities(result)) {
       stepsResults.step1GetCity = result;
       callback(null, 200, stepsResults);
