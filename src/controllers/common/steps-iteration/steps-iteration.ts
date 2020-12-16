@@ -10,12 +10,10 @@ const stepIteration = (stepValues: IterableIterator<StepIterInterface>, res: Res
     switch (true) {
       case !step.last:
         step.fn((err: ErrorInterface, statusCode: number, nowStepsResults?: any) => {
-          if (!err) {
-            if (statusCode === 200) {
-              stepIteration(stepValues, res, nowStepsResults);
-            } else if (statusCode === 204) {
-              apiSend(res, statusCode, null, null);
-            }
+          if (statusCode === 200) {
+            stepIteration(stepValues, res, nowStepsResults);
+          } else if (statusCode === 204) {
+            apiSend(res, statusCode, null, null);
           } else {
             apiSend(res, statusCode, null, err);
           }
@@ -24,8 +22,10 @@ const stepIteration = (stepValues: IterableIterator<StepIterInterface>, res: Res
 
       default:
         step.fn((err: ErrorInterface, statusCode: number, result?: any, totalItems?: number, token?: string) => {
-          if (!err) {
+          if (statusCode === 200) {
             apiSend(res, statusCode, result, null, totalItems, token);
+          } else if (statusCode === 204) {
+            apiSend(res, statusCode, null, null);
           } else {
             apiSend(res, statusCode, null, err);
           }

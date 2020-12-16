@@ -1,5 +1,5 @@
-import { GetCityResponse } from './get-city-response.interface';
+import { CityModel } from '../../../../models/city/city.model';
 
 export interface StepsResultGetCity {
-  step1GetCity: GetCityResponse;
+  step2GetCity: CityModel;
 }

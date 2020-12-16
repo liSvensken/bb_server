@@ -11,5 +11,5 @@ export const step2ComparePassword = (callback: (err: ErrorInterface, statusCode:
     } else {
       callback(err, statusCode, null);
     }
-  }, userPassword, stepsResults.step1GetUserFromDb.passwordHash)
+  }, userPassword, stepsResults.step1GetUserFromDb[0].passwordHash)
 }

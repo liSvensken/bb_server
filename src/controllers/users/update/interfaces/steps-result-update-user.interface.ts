@@ -1,5 +1,6 @@
 import { UpdateUserResponse } from './update-user-response.interface';
 
 export interface StepsResultUpdateUser {
-  step6UpdateUser: UpdateUserResponse;
+  step1GetUserIdByToken: number;
+  step7UpdateUser: UpdateUserResponse;
 }

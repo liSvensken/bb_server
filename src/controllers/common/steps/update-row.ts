@@ -16,25 +16,12 @@ export const updateRow = (callback: (err: ErrorInterface, statusCode: number, re
 
   queryUpdateRowByField((err, result) => {
     if (!err) {
-      switch (true) {
-        case !!(err):
-          error.type = ErrorTypes.InternalServerError;
-          error.message = err.message;
-          error.status = 500;
-          callback(error, error.status);
-          break;
-
-        case (!result.affectedRows):
-          error.type = ErrorTypes.BadRequest;
-          error.field = TablesEnum.Users;
-          error.message = `Row ${ updateFieldStr } with ${ attrFieldName } = ${ attrField } does not exist`;
-          error.status = 404;
-          callback(error, error.status);
-          break;
-
-        default:
-          callback(null, null, result);
-      }
+      callback(null, 204, result);
+    } else {
+      error.type = ErrorTypes.InternalServerError;
+      error.message = err.message;
+      error.status = 500;
+      callback(error, error.status);
     }
   }, tableName, updateFieldStr, attrFieldName, attrField)
 }

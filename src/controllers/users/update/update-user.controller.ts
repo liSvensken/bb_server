@@ -1,31 +1,35 @@
 import { Request, Response } from 'express';
-import { step1CheckValidForm } from './steps/step1-check-valid-form';
-import { step2CheckOriginalNickname } from './steps/step2-check-original-nickname';
-import { step3CheckOriginalEmail } from './steps/step3-check-oiginal-email';
-import { step4CheckServicesAnotherTable } from './steps/step4-check-services-another-table';
-import { step5CheckCitiesAnotherTable } from './steps/step5-check-cities-another-table';
-import { step6UpdateUser } from './steps/step6-update-user';
+import { step2CheckValidForm } from './steps/step2-check-valid-form';
+import { step3CheckOriginalNickname } from './steps/step3-check-original-nickname';
+import { step4CheckOriginalEmail } from './steps/step3-check-oiginal-email';
+import { step5CheckServicesAnotherTable } from './steps/step5-check-services-another-table';
+import { step6CheckCitiesAnotherTable } from './steps/step6-check-cities-another-table';
+import { step7UpdateUser } from './steps/step7-update-user';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { UpdateUserRequest } from './interfaces/update-user-request.interface';
 import { StepsResultUpdateUser } from './interfaces/steps-result-update-user.interface';
-import { step7SendApi } from './steps/step7-send-api';
+import { step8SendApi } from './steps/step8-send-api';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
+import { step1GetUserIdByToken } from './steps/step1-get-user-id-by-token';
 
 export function updateUserController(req: Request, res: Response) {
-  let user: UpdateUserRequest = req.body;
+  const user: UpdateUserRequest = req.body;
+  const token: string = req.headers.authorization.split(' ')[1];
 
   const steps: StepIterInterface[] = [
-    { fn: step1CheckValidForm, params: [user]},
-    { fn: step2CheckOriginalNickname, params: [user.nickname] },
-    { fn: step3CheckOriginalEmail, params: [user.email] },
-    { fn: step4CheckServicesAnotherTable, params: [user.role, user.serviceIds] },
-    { fn: step5CheckCitiesAnotherTable, params: [user.cityIds]},
-    { fn: step6UpdateUser, params: [user, req.params.id] },
-    { fn: step7SendApi, params: [], last: true }
+    { fn: step1GetUserIdByToken, params: [token]},
+    { fn: step2CheckValidForm, params: [user]},
+    { fn: step3CheckOriginalNickname, params: [user.nickname] },
+    { fn: step4CheckOriginalEmail, params: [user.email] },
+    { fn: step5CheckServicesAnotherTable, params: [user.role, user.serviceIds] },
+    { fn: step6CheckCitiesAnotherTable, params: [user.cityIds]},
+    { fn: step7UpdateUser, params: [user, req.params.id] }, // todo
+    { fn: step8SendApi, params: [], last: true }
   ];
 
   const stepsResults: StepsResultUpdateUser = {
-    step6UpdateUser: null
+    step1GetUserIdByToken: null,
+    step7UpdateUser: null
   }
 
   stepsIteration(steps, res, stepsResults);

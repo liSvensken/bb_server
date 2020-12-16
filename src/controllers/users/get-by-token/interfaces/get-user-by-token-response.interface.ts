@@ -1,3 +1,3 @@
-export interface GetUserByTokenResponse {
-  id: number
-}
+import { UserResponseModel } from '../../../../models/user/user-response.model';
+
+export type GetUserByTokenResponse = UserResponseModel;

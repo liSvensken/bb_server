@@ -13,7 +13,8 @@ import { getUserByToken } from './controllers/users/get-by-token/get-user-by-tok
 import { getUsersListController } from './controllers/users/get-users-list/get-users-list.controller';
 
 export function initRoutesUsers(): void {
-  // получить список users
+
+  // получить список users (мастеров или клиентов)
   app.post('/users', (req: Request, res: Response) => {
     getUsersListController(req, res);
   });
@@ -44,7 +45,7 @@ export function initRoutesUsers(): void {
   });
 
   // редактирование user-а
-  app.patch('/users/:id', (req: Request, res: Response) => {
+  app.patch('/users/update', (req: Request, res: Response) => {
     updateUserController(req, res);
   });
 }

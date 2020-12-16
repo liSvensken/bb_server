@@ -4,7 +4,7 @@ import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
 import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 
-export  const step3CheckOriginalEmail = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
+export  const step4CheckOriginalEmail = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
                                          userEmail: string, stepsResults: StepsResultUpdateUser) => {
 
   switch (true) {

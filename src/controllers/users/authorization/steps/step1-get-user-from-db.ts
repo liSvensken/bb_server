@@ -20,8 +20,15 @@ export const step1GetUserFromDb = (callback: (err: ErrorInterface, statusCode: n
 
   queryGetRowsByField((err, result) => {
     if (!err && isUsersDb(result)) {
-      stepsResults.step1GetUserFromDb = result[0];
-      callback(null, 200, stepsResults);
+      if (result) {
+        stepsResults.step1GetUserFromDb = result;
+        callback(null, 200, stepsResults);
+      } else {
+        error.type = ErrorTypes.Unauthorized;
+        error.message = 'Invalid login or password';
+        error.status = 401;
+        callback(null, error.status, null);
+      }
     } else {
       error.type = ErrorTypes.InternalServerError;
       error.message = err.message;

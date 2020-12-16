@@ -1,6 +1,6 @@
 import { GetCitiesListResponse } from './get-cities-list-response.interface';
 
 export interface StepsResultGetCitiesList {
-  step1GetCitiesFromDb: GetCitiesListResponse;
-  step2GetTotalItems: number;
+  step2GetCitiesFromDb: GetCitiesListResponse;
+  step3GetTotalItems: number;
 }

@@ -1,8 +1,10 @@
 import { UserDbModel } from '../../../../models/user/user-db.model';
 import { UserResponseModel } from '../../../../models/user/user-response.model';
-import { GetServiceResponse } from './get-user-response.interface';
+import { step1GetUserIdByToken } from '../steps/step1-get-user-id-by-token';
+import { GetUserByToken } from '../../../common/interfaces/get-user-by-token-response';
 
 export interface StepsResultGetUser {
-  step1GetUserFromDb: UserDbModel[];
-  step2TransformInUserResponse: GetServiceResponse,
+  step1GetUserIdByToken: number;
+  step2GetUserFromDb: UserDbModel[];
+  step3TransformInUserResponse: UserResponseModel[],
 }

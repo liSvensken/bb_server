@@ -1,24 +1,27 @@
 import { Request, Response } from 'express';
 import { GetServicesListRequest } from './interfaces/get-services-list-request.interface';
-import { step1GetServicesFromDb } from './steps/step1-get-services-from-db';
-import { step2GetTotalItems } from './steps/step2-get-total-items';
+import { step2GetServicesFromDb } from './steps/step2-get-services-from-db';
+import { step3GetTotalItems } from './steps/step3-get-total-items';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
 import { StepsResultGetServicesList } from './interfaces/steps-result-get-services-list';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
-import { step3SendApi } from './steps/step3-send-api';
+import { step4SendApi } from './steps/step4-send-api';
+import { step1CheckToken } from './steps/step1-check-token';
 
 export function getServicesListController(req: Request, res: Response) {
-  let reqBody: GetServicesListRequest = req.body;
+  const reqBody: GetServicesListRequest = req.body;
+  const token: string = req.headers.authorization.split(' ')[1];
 
   const stepsIter: StepIterInterface[] = [
-    { fn: step1GetServicesFromDb, params: [reqBody.limit, reqBody.offset] },
-    { fn: step2GetTotalItems, params: [] },
-    { fn: step3SendApi, params: [], last: true }
+    { fn: step1CheckToken, params: [token] },
+    { fn: step2GetServicesFromDb, params: [reqBody.limit, reqBody.offset] },
+    { fn: step3GetTotalItems, params: [] },
+    { fn: step4SendApi, params: [], last: true }
   ]
 
   const stepsResults: StepsResultGetServicesList = {
-    step1GetServicesFromDb: [],
-    step2GetTotalItems: null
+    step2GetServicesFromDb: [],
+    step3GetTotalItems: null
   }
 
   stepsIteration(stepsIter, res, stepsResults);

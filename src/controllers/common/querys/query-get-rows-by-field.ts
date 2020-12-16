@@ -8,7 +8,7 @@ export const queryGetRowsByField =
     (callback: (err: MysqlError | null, result: UserDbModel[] | ServiceModel[] | CityModel[]) => void,
                                    table: string, condition: string) => {
   connection.query(`SELECT * FROM timetable.${ table } WHERE ${ condition }`,
-      (err, result: ServiceModel[]) => {
+      (err, result: UserDbModel[] | ServiceModel[] | CityModel[]) => {
         callback(err, result);
       });
 }

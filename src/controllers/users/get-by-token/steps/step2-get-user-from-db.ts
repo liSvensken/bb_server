@@ -11,8 +11,14 @@ export const step2GetUserFromDb = (callback: (err: ErrorInterface, statusCode: n
 
   getRowsByField((err, statusCode, result) => {
     if (!err && isUsersDb(result)) {
-      stepsResults.step2GetUserFromDb = result;
-      callback(null, 200, stepsResults);
+      if (result) {
+        stepsResults.step2GetUserFromDb = result;
+        callback(null, 200, stepsResults);
+      } else {
+        callback(null, 204, null);
+      }
+    } else {
+      callback(err, statusCode, null);
     }
   }, TablesEnum.Users, id, UserDbEnum.Id);
 }
