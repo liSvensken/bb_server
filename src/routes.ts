@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { app } from './services/app.service';
-import { getUsersListController } from '../REMOVE/get-users-list/get-users-list.controller';
 import { registrationController } from './controllers/users/registration/registration.controller';
 import { updateUserController } from './controllers/users/update/update-user.controller';
 import { getServicesListController } from './controllers/services/get-list/get-services-list.controllerts';
@@ -11,23 +10,12 @@ import { getCitiesListController } from './controllers/cities/get-list/get-citie
 import { getCityByIdController } from './controllers/cities/get-by-id/get-city-by-id.controller';
 import { authorizationController } from './controllers/users/authorization/authorization.controller';
 import { getUserByToken } from './controllers/users/get-by-token/get-user-by-token';
-import { getMastersListController } from './controllers/users/get-masters-list/get-masters-list.controller';
-import { getClientsListController } from './controllers/users/get-clients-list/get-clients-list.controller';
+import { getUsersListController } from './controllers/users/get-users-list/get-users-list.controller';
 
 export function initRoutesUsers(): void {
   // получить список users
   app.post('/users', (req: Request, res: Response) => {
     getUsersListController(req, res);
-  });
-
-  // получить список мастеров
-  app.post('/masters', (req: Request, res: Response) => {
-    getMastersListController(req, res);
-  });
-
-  // получить список клиентов
-  app.post('/clients', (req: Request, res: Response) => {
-    getClientsListController(req, res);
   });
 
   // получить user-а по id
