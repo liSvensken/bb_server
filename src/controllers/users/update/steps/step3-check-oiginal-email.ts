@@ -1,8 +1,8 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { checkOriginalOnField } from '../../../common/steps/check-original-on-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserDbEnum } from '../../../../enums/users/user-request.enum';
 import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
+import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 
 export  const step3CheckOriginalEmail = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
                                          userEmail: string, stepsResults: StepsResultUpdateUser) => {

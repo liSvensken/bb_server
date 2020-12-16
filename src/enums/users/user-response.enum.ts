@@ -13,4 +13,6 @@ export enum UserResponseEnum {
   Birthday = 'birthday',
   Avatar = 'avatar',
   InfoYourself = 'infoYourself',
+  MyMasters = 'myMasters',
+  MyClients = 'myClients'
 }

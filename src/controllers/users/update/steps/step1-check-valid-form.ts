@@ -5,8 +5,7 @@ import { emailReg, nicknameReg, phoneReg } from '../../../../utils/consts/regula
 import { UserGenderType } from '../../../../types/user-gender.type';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { UserRegistrationRequest } from '../../registration/interfaces/user-registration-request.interface';
-import { UserDbEnum } from '../../../../enums/users/user-request.enum';
-import { StepsResultRegistration } from '../../registration/interfaces/steps-result-registration.interface';
+import { UserRequestEnum } from '../../../../enums/users/user-request.enum';
 import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
 
 export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
@@ -20,67 +19,67 @@ export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: 
 
   const validations: ValidatorInterface[] = [
     {
-      key: UserDbEnum.Nickname,
+      key: UserRequestEnum.Nickname,
       value: user.nickname,
       validators: [Validators.minLength(UserFieldsLength.nickname.min),
         Validators.maxLength(UserFieldsLength.nickname.max), Validators.regular(nicknameReg)]
     },
     {
-      key: UserDbEnum.Email,
+      key: UserRequestEnum.Email,
       value: user.email,
       validators: [Validators.minLength(UserFieldsLength.email.min),
         Validators.maxLength(UserFieldsLength.email.max), Validators.regular(emailReg)]
     },
     {
-      key: UserDbEnum.Password,
+      key: UserRequestEnum.Password,
       value: user.password,
       validators: [Validators.minLength(UserFieldsLength.password.min),
         Validators.maxLength(UserFieldsLength.password.max), Validators.regular(emailReg)]
     },
     {
-      key: UserDbEnum.LastsName,
+      key: UserRequestEnum.LastsName,
       value: user.lastsName,
       validators: [Validators.minLength(UserFieldsLength.lastsName.min),
         Validators.maxLength(UserFieldsLength.lastsName.max)]
     },
     {
-      key: UserDbEnum.FirsName,
+      key: UserRequestEnum.FirsName,
       value: user.firsName,
       validators: [Validators.minLength(UserFieldsLength.firsName.min),
         Validators.maxLength(UserFieldsLength.firsName.max)]
     },
     {
-      key: UserDbEnum.ServiceIds,
+      key: UserRequestEnum.ServiceIds,
       value: user.serviceIds,
       validators: [Validators.maxLength(UserFieldsLength.serviceIds.max)]
     },
     {
-      key: UserDbEnum.CityIds,
+      key: UserRequestEnum.CityIds,
       value: user.cityIds,
       validators: [Validators.maxLength(UserFieldsLength.cityIds.max)]
     },
     {
-      key: UserDbEnum.Phone,
+      key: UserRequestEnum.Phone,
       value: user.phone,
       validators: [Validators.regular(phoneReg)]
     },
     {
-      key: UserDbEnum.Gender,
+      key: UserRequestEnum.Gender,
       value: user.gender,
       validators: [Validators.matchEnum(UserGenderType)]
     },
     {
-      key: UserDbEnum.Birthday,
+      key: UserRequestEnum.Birthday,
       value: user.birthday,
       validators: [Validators.maxLength(UserFieldsLength.birthday.max)]
     },
     {
-      key: UserDbEnum.Avatar,
+      key: UserRequestEnum.Avatar,
       value: user.avatar,
       validators: [Validators.maxLength(UserFieldsLength.avatar.max)]
     },
     {
-      key: UserDbEnum.InfoYourself,
+      key: UserRequestEnum.InfoYourself,
       value: user.infoYourself,
       validators: [Validators.maxLength(UserFieldsLength.infoYourself.max)]
     },

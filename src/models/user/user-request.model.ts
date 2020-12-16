@@ -4,4 +4,6 @@ export interface UserRequestModel extends UserConstFields {
   password: string;
   serviceIds?: number[];
   cityIds?: number[];
+  myMasterIds?: number[];
+  myClientIds?: number[];
 }

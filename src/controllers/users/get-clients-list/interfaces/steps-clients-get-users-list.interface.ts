@@ -4,6 +4,6 @@ import { GetUsersListResponse } from './get-clients-list-response.interface';
 
 export interface StepsResultGetClientsList {
   step1GetClientsFromDb?: UserDbModel[];
-  step2ParseClientsInResponse?: GetUsersListResponse;
+  step2TransformClientsInResponse?: GetUsersListResponse;
   step5GetTotalItems?: number;
 }

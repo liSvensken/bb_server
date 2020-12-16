@@ -13,4 +13,6 @@ export enum UserDbEnum {
   Birthday = 'birthday',
   Avatar = 'avatar',
   InfoYourself = 'infoYourself',
+  MyMasterIdsStr = 'myMasterIdsStr',
+  MyClientIdsStr = 'myClientIdsStr'
 }

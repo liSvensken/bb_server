@@ -5,5 +5,5 @@ import { StepsResultGetUser } from '../interfaces/steps-result.interface';
 
 export const step6SendApi = (callback: (err: ErrorInterface, statusCode: number, result?: UserResponseModel[]) => void,
                              stepsResults?: StepsResultGetUser) => {
-  callback(null, 200, stepsResults.step2ParseInUserResponse);
+  callback(null, 200, stepsResults.step2TransformInUserResponse);
 }

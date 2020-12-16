@@ -15,7 +15,9 @@ export function isUsersDb(param: any[]): param is UserDbModel[] {
         !((elem as UserDbModel).gender) ||
         !((elem as UserDbModel).birthday) ||
         !((elem as UserDbModel).avatar) ||
-        !((elem as UserDbModel).infoYourself)) {
+        !((elem as UserDbModel).infoYourself) ||
+        !((elem as UserDbModel).myMasterIdsStr) ||
+        !((elem as UserDbModel).myClientIdsStr)) {
       return false;
     }
   })

@@ -6,4 +6,6 @@ export interface UserResponseModel extends UserConstFields {
   id: number;
   services?: ServiceModel[];
   cities?: CityModel[];
+  myMasters?: UserResponseModel[];
+  myClients?: UserResponseModel[];
 }

@@ -4,5 +4,5 @@ import { GetServiceResponse } from './get-user-response.interface';
 
 export interface StepsResultGetUser {
   step1GetUserFromDb: UserDbModel[];
-  step2ParseInUserResponse: GetServiceResponse,
+  step2TransformInUserResponse: GetServiceResponse,
 }

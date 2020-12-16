@@ -1,7 +1,7 @@
 import { UserRegistrationResponse } from './user-registration-response.interface';
 
 export interface StepsResultRegistration {
-  step6HashPassword: string;
-  step7CreateUser: UserRegistrationResponse;
-  step8CreateToken: string;
+  step4HashPassword: string;
+  step5CreateUser: UserRegistrationResponse;
+  step6CreateToken: string;
 }

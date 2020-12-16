@@ -1,9 +1,9 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { checkFieldsAnotherTable } from '../../../common/steps/check-fields-another-table';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
-import { UserDbEnum } from '../../../../enums/users/user-request.enum';
 import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.interface';
 import { CitiesDbEnum } from '../../../../enums/cities/cities-db.enum';
+import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 
 export  const step5CheckCitiesAnotherTable = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
                                               userCityIds: number[], stepsResults: StepsResultUpdateUser) => {
@@ -15,7 +15,7 @@ export  const step5CheckCitiesAnotherTable = (callback: (err: ErrorInterface, st
         } else {
           callback(err, statusCode, null);
         }
-      }, TablesEnum.Cities, userCityIds, CitiesDbEnum.Id, UserDbEnum.CityIds);
+      }, TablesEnum.Cities, userCityIds, CitiesDbEnum.Id, UserDbEnum.CityIdsStr);
       break;
 
     default:

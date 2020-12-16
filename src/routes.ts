@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { app } from './services/app.service';
-import { getUsersListController } from './controllers/users/get-users-list/get-users-list.controller';
+import { getUsersListController } from '../REMOVE/get-users-list/get-users-list.controller';
 import { registrationController } from './controllers/users/registration/registration.controller';
 import { updateUserController } from './controllers/users/update/update-user.controller';
 import { getServicesListController } from './controllers/services/get-list/get-services-list.controllerts';

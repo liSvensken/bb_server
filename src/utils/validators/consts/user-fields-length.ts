@@ -1,48 +1,48 @@
-import { UserDbEnum } from '../../../enums/users/user-request.enum';
+import { UserRequestEnum } from '../../../enums/users/user-request.enum';
 
 export const UserFieldsLength = {
-  [UserDbEnum.Nickname]: {
+  [UserRequestEnum.Nickname]: {
     min: 3,
     max: 30
   },
 
-  [UserDbEnum.Email]: {
+  [UserRequestEnum.Email]: {
     min: 5,
     max: 255
   },
 
-  [UserDbEnum.Password]: {
+  [UserRequestEnum.Password]: {
     min: 3,
     max: 255
   },
 
-  [UserDbEnum.LastsName]:  {
+  [UserRequestEnum.LastsName]:  {
     min: 2,
     max: 45
   },
 
-  [UserDbEnum.FirsName]: {
+  [UserRequestEnum.FirsName]: {
     min: 2,
     max: 45
   },
 
-  [UserDbEnum.ServiceIds]: {
+  [UserRequestEnum.ServiceIds]: {
     max: 3
   },
 
-  [UserDbEnum.CityIds]: {
+  [UserRequestEnum.CityIds]: {
     max: 3
   },
 
-  [UserDbEnum.Birthday]: {
+  [UserRequestEnum.Birthday]: {
     max: 11
   },
 
-  [UserDbEnum.Avatar]: {
+  [UserRequestEnum.Avatar]: {
     max: 255
   },
 
-  [UserDbEnum.InfoYourself]: {
+  [UserRequestEnum.InfoYourself]: {
     max: 3000
   },
 }

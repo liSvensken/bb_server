@@ -5,5 +5,5 @@ import { UserResponseModel } from '../../../../models/user/user-response.model';
 export interface StepsResultGetUserByToken {
   step1GetUserId: GetUserByTokenResponse;
   step2GetUserFromDb: UserDbModel[];
-  step3ParseInUserResponse: UserResponseModel[]
+  step3TransformInUserResponse: UserResponseModel[]
 }

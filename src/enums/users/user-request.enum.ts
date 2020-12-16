@@ -1,4 +1,4 @@
-export enum UserDbEnum {
+export enum UserRequestEnum {
   Id = 'id',
   Role = 'role',
   Nickname = 'nickname',
@@ -13,4 +13,6 @@ export enum UserDbEnum {
   Birthday = 'birthday',
   Avatar = 'avatar',
   InfoYourself = 'infoYourself',
+  MyMasterIds = 'myMasterIds',
+  MyClientIds = 'myClientIds'
 }

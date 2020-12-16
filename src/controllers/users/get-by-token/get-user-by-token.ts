@@ -5,7 +5,7 @@ import { StepsResultGetUserByToken } from './interfaces/steps-result-get-user-by
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { step2GetUserFromDb } from './steps/step2-get-user-from-db';
 import { step6SendApi } from './steps/step6-send-api';
-import { step3ParseInUserResponse } from './steps/step3-parse-in-user-response';
+import { step3TransformInUserResponse } from './steps/step3-transform-in-user-response';
 import { step4ParseInServicesResponse } from './steps/step4-parse-in-services-response';
 import { step5ParseInCitiesResponse } from './steps/step5-parse-in-cities-response';
 
@@ -15,7 +15,7 @@ export function getUserByToken(req: Request, res: Response) {
   const stepsIter: StepIterInterface[] = [
     { fn: step1GetUserIdByToken, params: [token] },
     { fn: step2GetUserFromDb, params: [] },
-    { fn: step3ParseInUserResponse, params: [] },
+    { fn: step3TransformInUserResponse, params: [] },
     { fn: step4ParseInServicesResponse, params: [] },
     { fn: step5ParseInCitiesResponse, params: [] },
     { fn: step6SendApi, params: [], last: true },
@@ -24,7 +24,7 @@ export function getUserByToken(req: Request, res: Response) {
   const stepsResults: StepsResultGetUserByToken = {
     step1GetUserId: null,
     step2GetUserFromDb: null,
-    step3ParseInUserResponse: null
+    step3TransformInUserResponse: null
   }
 
   stepsIteration(stepsIter, res, stepsResults);

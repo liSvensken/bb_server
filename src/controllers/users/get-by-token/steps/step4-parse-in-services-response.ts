@@ -1,4 +1,4 @@
-import { parseServicesInResponse } from '../../../common/steps/user/parse-services-in-response';
+import { parseServiceIdsStrInResponse } from '../../../common/steps/user/parse-service-ids-str-in-response';
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { StepsResultGetUserByToken } from '../interfaces/steps-result-get-user-by-token.interface';
 
@@ -6,12 +6,12 @@ import { StepsResultGetUserByToken } from '../interfaces/steps-result-get-user-b
 export const step4ParseInServicesResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUserByToken) => void,
                                              stepsResults: StepsResultGetUserByToken) => {
 
-  parseServicesInResponse((err, statusCode, userRes) => {
+  parseServiceIdsStrInResponse((err, statusCode, userRes) => {
     if (!err) {
-      stepsResults.step3ParseInUserResponse = userRes;
+      stepsResults.step3TransformInUserResponse = userRes;
       callback(null, 200, stepsResults);
     } else {
       callback(err, statusCode, null);
     }
-  }, stepsResults.step2GetUserFromDb, stepsResults.step3ParseInUserResponse);
+  }, stepsResults.step2GetUserFromDb, stepsResults.step3TransformInUserResponse);
 }
