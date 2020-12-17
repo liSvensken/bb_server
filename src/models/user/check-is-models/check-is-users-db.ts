@@ -8,7 +8,7 @@ export function isUsersDb(param: any[]): param is UserDbModel[] {
         !((elem as UserDbModel).email) ||
         !((elem as UserDbModel).passwordHash) ||
         !((elem as UserDbModel).serviceIdsStr) ||
-        !((elem as UserDbModel).cityIdsStr) ||
+        !((elem as UserDbModel).cityId) ||
         !((elem as UserDbModel).lastsName) ||
         !((elem as UserDbModel).firsName) ||
         !((elem as UserDbModel).phone) ||

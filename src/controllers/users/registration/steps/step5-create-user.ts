@@ -31,7 +31,7 @@ export const step5CreateUser = (callback: (err: ErrorInterface, statusCode: numb
   addValue(user.lastsName, UserDbEnum.LastsName);
   addValue(user.firsName, UserDbEnum.FirsName);
   addValue(user.serviceIds, UserDbEnum.ServiceIdsStr);
-  addValue(user.cityIds, UserDbEnum.CityIdsStr);
+  addValue(user.cityId, UserDbEnum.CityId);
   addValue(user.phone, UserDbEnum.Phone);
   addValue(user.gender, UserDbEnum.Gender);
   addValue(user.birthday, UserDbEnum.Birthday);

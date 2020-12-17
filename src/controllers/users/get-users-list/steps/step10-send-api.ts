@@ -4,5 +4,5 @@ import { GetUsersListResponse } from '../interfaces/get-users-list-response.inte
 
 export const step10SendApi = (callback: (err: ErrorInterface, statusCode: number, result: GetUsersListResponse, totalItems: number) => void,
                               stepsResults: StepsResultGetUsersList) => {
-  callback(null, 200, stepsResults.step3TransformUsersInResponse, stepsResults.step7GetTotalItems);
+  callback(null, 200, stepsResults.step4TransformUsersDbInResponse, stepsResults.step7GetTotalItems);
 }

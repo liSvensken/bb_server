@@ -9,3 +9,10 @@ export function isCities(param: any[]): param is CityModel[] {
   })
   return true;
 }
+
+export function isCity(param: any): param is CityModel {
+  if (!((param as CityModel).id) ||
+      !((param as CityModel).name)) {
+    return false;
+  }
+}

@@ -4,5 +4,5 @@ import { UserAuthorizationResponse } from '../interfaces/user-authorization-resp
 
 export const step9SendApi = (callback: (err: ErrorInterface, statusCode: number, result: UserAuthorizationResponse, totalItems: number, token: string) => void,
                              stepsResults: StepsResultAuthorization) => {
-  callback(null, 200, stepsResults.step4TransformInUserResponse[0], null, stepsResults.step3CreateToken);
+  callback(null, 200, stepsResults.step4TransformUserDbInResponse[0], null, stepsResults.step3CreateToken);
 }

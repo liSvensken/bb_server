@@ -4,7 +4,7 @@ export interface UserDbModel extends UserConstFields {
   id: number;
   passwordHash: string,
   serviceIdsStr?: string;
-  cityIdsStr?: string;
+  cityId?: number;
   myMasterIdsStr?: string;
   myClientIdsStr?: string;
 }

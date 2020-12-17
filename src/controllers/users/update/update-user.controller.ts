@@ -8,7 +8,6 @@ import { step7UpdateUser } from './steps/step7-update-user';
 import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { UpdateUserRequest } from './interfaces/update-user-request.interface';
 import { StepsResultUpdateUser } from './interfaces/steps-result-update-user.interface';
-import { step8SendApi } from './steps/step8-send-api';
 import { StepIterInterface } from '../../common/steps-iteration/interfaces/step-iter.interface';
 import { step1GetUserIdByToken } from './steps/step1-get-user-id-by-token';
 
@@ -22,14 +21,12 @@ export function updateUserController(req: Request, res: Response) {
     { fn: step3CheckOriginalNickname, params: [user.nickname] },
     { fn: step4CheckOriginalEmail, params: [user.email] },
     { fn: step5CheckServicesAnotherTable, params: [user.role, user.serviceIds] },
-    { fn: step6CheckCitiesAnotherTable, params: [user.cityIds]},
-    { fn: step7UpdateUser, params: [user, req.params.id] }, // todo
-    { fn: step8SendApi, params: [], last: true }
+    { fn: step6CheckCitiesAnotherTable, params: [user.cityId]},
+    { fn: step7UpdateUser, params: [user], last: true }
   ];
 
   const stepsResults: StepsResultUpdateUser = {
-    step1GetUserIdByToken: null,
-    step7UpdateUser: null
+    step1GetUserIdByToken: null
   }
 
   stepsIteration(steps, res, stepsResults);

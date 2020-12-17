@@ -6,7 +6,10 @@ import { StepsResultUpdateUser } from '../interfaces/steps-result-update-user.in
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 
 export const step7UpdateUser = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultUpdateUser) => void,
-                                user: UserRegistrationRequest, reqParamsId: string, stepsResults: StepsResultUpdateUser) => {
+                                user: UserRegistrationRequest, stepsResults: StepsResultUpdateUser) => {
+
+  const id = stepsResults.step1GetUserIdByToken;
+
   let updateFieldStr = '';
 
   const addQueryFieldsPatch = (field: string | number[] | number, fieldName: string) => {
@@ -20,19 +23,18 @@ export const step7UpdateUser = (callback: (err: ErrorInterface, statusCode: numb
   addQueryFieldsPatch(user.lastsName, UserDbEnum.LastsName);
   addQueryFieldsPatch(user.firsName, UserDbEnum.FirsName);
   addQueryFieldsPatch(user.serviceIds, UserDbEnum.ServiceIdsStr);
-  addQueryFieldsPatch(user.cityIds, UserDbEnum.CityIdsStr);
+  addQueryFieldsPatch(user.cityId, UserDbEnum.CityId);
   addQueryFieldsPatch(user.phone, UserDbEnum.Phone);
   addQueryFieldsPatch(user.gender, UserDbEnum.Gender);
   addQueryFieldsPatch(user.birthday, UserDbEnum.Birthday);
   addQueryFieldsPatch(user.avatar, UserDbEnum.Avatar);
   addQueryFieldsPatch(user.infoYourself, UserDbEnum.InfoYourself);
 
-  updateRow((err, statusCode, result) => {
+  updateRow((err, statusCode) => {
     if (!err) {
-      stepsResults.step6UpdateUser = result
-      callback(null, 200, stepsResults);
+      callback(null, statusCode, stepsResults);
     } else {
       callback(err, statusCode, null);
     }
-  }, TablesEnum.Users, updateFieldStr, UserDbEnum.Id, reqParamsId);
+  }, TablesEnum.Users, updateFieldStr, UserDbEnum.Id, id);
 }

@@ -8,5 +8,5 @@ interface UserId {
 export interface StepsResultGetUserByToken {
   step1GetUserId: UserId;
   step2GetUserFromDb: UserDbModel[];
-  step3TransformInUserResponse: UserResponseModel[]
+  step3TransformUserDbInResponse: UserResponseModel[]
 }

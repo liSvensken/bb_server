@@ -4,8 +4,8 @@ import { ErrorTypes } from '../../../utils/errors/error.types';
 import { TablesEnum } from '../../../enums/tables-name.enum';
 import { SqlResult } from '../interfaces/sql-result.interface.';
 
-export const updateRow = (callback: (err: ErrorInterface, statusCode: number, result?: SqlResult) => void,
-                          tableName: string, updateFieldStr: string, attrFieldName: string, attrField: string) => {
+export const updateRow = (callback: (err: ErrorInterface, statusCode: number) => void,
+                          tableName: string, updateFieldStr: string, attrFieldName: string, attrField: number | string) => {
 
   let error: ErrorInterface = {
     type: '',
@@ -14,9 +14,13 @@ export const updateRow = (callback: (err: ErrorInterface, statusCode: number, re
     status: 0,
   };
 
-  queryUpdateRowByField((err, result) => {
+  if (typeof attrField === 'string') {
+    attrField = `'${ attrField }'`
+  }
+
+  queryUpdateRowByField((err) => {
     if (!err) {
-      callback(null, 204, result);
+      callback(null, 204);
     } else {
       error.type = ErrorTypes.InternalServerError;
       error.message = err.message;

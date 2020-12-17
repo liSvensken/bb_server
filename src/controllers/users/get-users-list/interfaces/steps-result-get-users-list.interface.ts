@@ -4,8 +4,8 @@ import { UserRole } from '../../../../types/user-role.type';
 
 export interface StepsResultGetUsersList {
   step1GetUserIdByToken: number;
-  step2GetRole: UserRole;
+  step2GetCurrentUserRole: UserRole;
   step3GetUsersFromDb?: UserDbModel[];
-  step3TransformUsersInResponse?: GetUsersListResponse;
+  step4TransformUsersDbInResponse?: GetUsersListResponse;
   step7GetTotalItems?: number;
 }

@@ -1,4 +1,7 @@
 export enum ErrorTypes {
+  // 204 - нет содержимого
+  NoContent = 'No content',
+
   // 400 - плохой, неверный запрос (невалидный параметр)
   BadRequest = 'Bad request',
 

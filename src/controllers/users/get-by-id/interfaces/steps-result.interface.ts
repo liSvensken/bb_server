@@ -6,5 +6,5 @@ import { GetUserByToken } from '../../../common/interfaces/get-user-by-token-res
 export interface StepsResultGetUser {
   step1GetUserIdByToken: number;
   step2GetUserFromDb: UserDbModel[];
-  step3TransformInUserResponse: UserResponseModel[],
+  step4TransformUserDbInResponse: UserResponseModel[],
 }

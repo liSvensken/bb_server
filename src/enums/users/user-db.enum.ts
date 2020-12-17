@@ -7,7 +7,7 @@ export enum UserDbEnum {
   LastsName = 'lastsName',
   FirsName = 'firsName',
   ServiceIdsStr = 'serviceIdsStr',
-  CityIdsStr = 'cityIdsStr',
+  CityId = 'CityId',
   Phone = 'phone',
   Gender = 'gender',
   Birthday = 'birthday',

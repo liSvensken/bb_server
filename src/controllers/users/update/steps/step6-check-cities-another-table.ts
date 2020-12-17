@@ -15,7 +15,7 @@ export  const step6CheckCitiesAnotherTable = (callback: (err: ErrorInterface, st
         } else {
           callback(err, statusCode, null);
         }
-      }, TablesEnum.Cities, userCityIds, CitiesDbEnum.Id, UserDbEnum.CityIdsStr);
+      }, TablesEnum.Cities, userCityIds, CitiesDbEnum.Id, UserDbEnum.CityId);
       break;
 
     default:

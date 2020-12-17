@@ -7,7 +7,7 @@ export enum UserRequestEnum {
   LastsName = 'lastsName',
   FirsName = 'firsName',
   ServiceIds = 'serviceIds',
-  CityIds = 'cityIds',
+  CityId = 'CityId',
   Phone = 'phone',
   Gender = 'gender',
   Birthday = 'birthday',

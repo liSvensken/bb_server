@@ -4,5 +4,5 @@ import { UserResponseModel } from '../../../../models/user/user-response.model';
 export interface StepsResultAuthorization {
   step1GetUserFromDb: UserDbModel[];
   step3CreateToken: string;
-  step4TransformInUserResponse: UserResponseModel[];
+  step4TransformUserDbInResponse: UserResponseModel[];
 }

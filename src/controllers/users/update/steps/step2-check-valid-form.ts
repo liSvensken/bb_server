@@ -54,8 +54,8 @@ export const step2CheckValidForm = (callback: (err: ErrorInterface, statusCode: 
       validators: [Validators.maxLength(UserFieldsLength.serviceIds.max)]
     },
     {
-      key: UserRequestEnum.CityIds,
-      value: user.cityIds,
+      key: UserRequestEnum.CityId,
+      value: user.cityId,
       validators: [Validators.maxLength(UserFieldsLength.cityIds.max)]
     },
     {

@@ -6,7 +6,7 @@ import { ServiceModel } from '../../../models/service/service.model';
 import { CityModel } from '../../../models/city/city.model';
 
 export const getRowsByField =
-    (callback: (err: ErrorInterface, statusCode: number, result:  UserDbModel[] | ServiceModel[] | CityModel[]) => void,
+    (callback: (err: ErrorInterface, statusCode: number, result: UserDbModel[] | ServiceModel[] | CityModel[]) => void,
                               table: string, field: string | number | number[], fieldName: string) => {
   let error: ErrorInterface = {
     type: '',

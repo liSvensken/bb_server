@@ -30,7 +30,7 @@ export const UserFieldsLength = {
     max: 3
   },
 
-  [UserRequestEnum.CityIds]: {
+  [UserRequestEnum.CityId]: {
     max: 3
   },
 
