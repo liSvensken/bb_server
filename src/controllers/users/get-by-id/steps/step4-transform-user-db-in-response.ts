@@ -4,8 +4,10 @@ import { StepsResultGetUser } from '../interfaces/steps-result.interface';
 
 export const step4TransformUserDbInResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUser) => void,
                                                stepsResults: StepsResultGetUser) => {
+  const role = stepsResults.step2GetUserFromDb[0].role;
+
   transformUsersDbInResponse(usersResponse => {
     stepsResults.step4TransformUserDbInResponse = usersResponse;
     callback(null, 200, stepsResults);
-  }, stepsResults.step2GetUserFromDb);
+  }, role, stepsResults.step2GetUserFromDb);
 }

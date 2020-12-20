@@ -6,8 +6,10 @@ import { transformUsersDbInResponse } from '../../../common/steps/user/transform
 export const step3TransformUserDbInResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUserByToken) => void,
                                                stepsResults: StepsResultGetUserByToken) => {
 
+  const role = stepsResults.step2GetUserFromDb[0].role;
+
   transformUsersDbInResponse(usersResponse => {
     stepsResults.step3TransformUserDbInResponse = usersResponse;
     callback(null, 200, stepsResults);
-  }, stepsResults.step2GetUserFromDb);
+  }, role, stepsResults.step2GetUserFromDb);
 }

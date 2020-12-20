@@ -20,7 +20,7 @@ export const step1GetUserFromDb = (callback: (err: ErrorInterface, statusCode: n
 
   queryGetRowsByField((err, result) => {
     if (!err && isUsersDb(result)) {
-      if (result) {
+      if (result.length) {
         stepsResults.step1GetUserFromDb = result;
         callback(null, 200, stepsResults);
       } else {

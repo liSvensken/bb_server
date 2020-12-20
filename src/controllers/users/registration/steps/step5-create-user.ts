@@ -14,7 +14,7 @@ export const step5CreateUser = (callback: (err: ErrorInterface, statusCode: numb
   let fieldsValueStr = ``;
   let fieldsNameStr = ``;
 
-  const addValue = (field: string | number[] | UserRole | UserGender, fieldNameDb: string) => {
+  const addValue = (field: string | number | number[] | UserRole | UserGender, fieldNameDb: string) => {
     if (field) {
       if (typeof field === 'object') {
         field = `${ JSON.stringify(field) }`;

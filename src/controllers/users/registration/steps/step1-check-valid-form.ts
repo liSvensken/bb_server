@@ -62,7 +62,7 @@ export const step1CheckValidForm = (callback: (err: ErrorInterface, statusCode: 
     {
       key: UserRequestEnum.CityId,
       value: user.cityId,
-      validators: [Validators.maxLength(UserFieldsLength.cityIds.max)]
+      validators: [Validators.maxLength(UserFieldsLength.CityId.max)]
     },
     {
       key: UserRequestEnum.Phone,

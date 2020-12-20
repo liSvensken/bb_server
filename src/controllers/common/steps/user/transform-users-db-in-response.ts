@@ -2,7 +2,7 @@ import { UserResponseModel } from '../../../../models/user/user-response.model';
 import { UserDbModel } from '../../../../models/user/user-db.model';
 import { UserRole, UserRoleType } from '../../../../types/user-role.type';
 import { getRowsByField } from '../get-rows-by-field';
-import { parseMySubscriberInResponse } from './parse-my-subscriber-in-response';
+import { parseMySubscriber } from './parse-clients-or-masters/parse-my-subscriber';
 
 export const transformUsersDbInResponse = (callback: (usersResponse: UserResponseModel[]) => void,
                                            role: UserRole, userDb: UserDbModel[]) => {
@@ -10,10 +10,10 @@ export const transformUsersDbInResponse = (callback: (usersResponse: UserRespons
 
   userDb.forEach((elem) => {
     let user: UserResponseModel = {
-      id: elem.id,
-      role: elem.role,
-      nickname: elem.nickname,
-      email: elem.email,
+      id: elem.id ? elem.id : null,
+      role: elem.role ? elem.role : null,
+      nickname: elem.nickname ? elem.nickname : null,
+      email: elem.email ? elem.email : null,
       city: elem.cityId ? { id: 0, name: '' } : null,
       lastsName: elem.lastsName ? elem.lastsName : null,
       firsName: elem.firsName ? elem.firsName : null,
@@ -28,12 +28,6 @@ export const transformUsersDbInResponse = (callback: (usersResponse: UserRespons
       case UserRoleType.MASTER:
         user.services = elem.serviceIdsStr ? [] : null;
         user.myClients = elem.myClientIdsStr ? [] : null;
-          if (elem.myClientIdsStr) {
-            const myClientId: number[] = JSON.parse(elem.myClientIdsStr);
-            parseMySubscriberInResponse((err, statusCode, result) => {
-
-            }, role, myClientId, user.myClients)
-          }
         break;
 
       case UserRoleType.CLIENT:

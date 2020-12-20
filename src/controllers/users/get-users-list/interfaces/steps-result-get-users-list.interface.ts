@@ -7,5 +7,5 @@ export interface StepsResultGetUsersList {
   step2GetCurrentUserRole: UserRole;
   step3GetUsersFromDb?: UserDbModel[];
   step4TransformUsersDbInResponse?: GetUsersListResponse;
-  step7GetTotalItems?: number;
+  step8GetTotalItems?: number;
 }

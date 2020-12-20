@@ -8,8 +8,7 @@ import { step8SendApi } from './steps/step8-send-api';
 import { step3TransformUserDbInResponse } from './steps/step3-transform-user-db-in-response';
 import { step4ParseServicesDbInResponse } from './steps/step4-parse-services-db-in-response';
 import { step5ParseCityDbInResponse } from './steps/step5-parse-city-db-in-response';
-import { step6ParseMyClientsDbInResponse } from './steps/step6-parse-my-clients-db-in-response';
-import { step7ParseMyMastersDbInResponse } from './steps/step7-parse-my-masters-db-in-response';
+import { step6ParseMyClientsOrMastersDbInResponse } from './steps/step6-parse-my-clients-or-masters-db-in-response';
 
 export function getUserByToken(req: Request, res: Response) {
   const token = req.headers.authorization.split(' ')[1];
@@ -20,8 +19,7 @@ export function getUserByToken(req: Request, res: Response) {
     { fn: step3TransformUserDbInResponse, params: [] },
     { fn: step4ParseServicesDbInResponse, params: [] },
     { fn: step5ParseCityDbInResponse, params: [] },
-    { fn: step6ParseMyClientsDbInResponse, params: [] },
-    { fn: step7ParseMyMastersDbInResponse, params: [] },
+    { fn: step6ParseMyClientsOrMastersDbInResponse, params: [] },
     { fn: step8SendApi, params: [], last: true },
   ]
 

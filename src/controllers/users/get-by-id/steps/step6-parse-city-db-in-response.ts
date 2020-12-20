@@ -1,11 +1,11 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { StepsResultGetUser } from '../interfaces/steps-result.interface';
-import { parseCityDbInResponse } from '../../../common/steps/user/parse-city-db-in-response';
+import { parseCityFromUsersList } from '../../../common/steps/user/parse-city/parse-city-from-users-list';
 
 
 export const step6ParseCityDbInResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUser) => void,
                                            stepsResults: StepsResultGetUser) => {
-  parseCityDbInResponse((err, statusCode, userRes) => {
+  parseCityFromUsersList((err, statusCode, userRes) => {
     if (!err) {
       stepsResults.step4TransformUserDbInResponse = userRes;
       callback(null, 200, stepsResults);

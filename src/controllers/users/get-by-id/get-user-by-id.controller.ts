@@ -7,10 +7,9 @@ import { stepsIteration } from '../../common/steps-iteration/steps-iteration';
 import { step5ParseServicesDbInResponse } from './steps/step5-parse-services-db-in-response';
 import { step6ParseCityDbInResponse } from './steps/step6-parse-city-db-in-response';
 import { step9SendApi } from './steps/step9-send-api';
-import { step7ParseMyClientsDbInResponse } from './steps/step7-parse-my-clients-db-in-response';
-import { step8ParseMyMastersDbInResponse } from './steps/step8-parse-my-masters-db-in-response';
 import { step1GetUserIdByToken } from './steps/step1-get-user-id-by-token';
 import { step3CheckRole } from './steps/step3-check-role';
+import { step7ParseMyClientsOrMastersDbInResponse } from './steps/step7-parse-my-clients-or-masters-db-in-response';
 
 export function getUserByIdController(req: Request, res: Response) {
   const reqId: number = JSON.parse(req.params.id);
@@ -23,8 +22,7 @@ export function getUserByIdController(req: Request, res: Response) {
     { fn: step4TransformUserDbInResponse, params: [] },
     { fn: step5ParseServicesDbInResponse, params: [] },
     { fn: step6ParseCityDbInResponse, params: [] },
-    { fn: step7ParseMyClientsDbInResponse, params: [] },
-    { fn: step8ParseMyMastersDbInResponse, params: [] },
+    { fn: step7ParseMyClientsOrMastersDbInResponse, params: [] },
     { fn: step9SendApi, params: [], last: true },
   ]
 

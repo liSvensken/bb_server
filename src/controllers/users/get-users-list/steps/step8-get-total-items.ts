@@ -6,12 +6,14 @@ import { StepsResultGetUsersList } from '../interfaces/steps-result-get-users-li
 import { countRowsByFieldValue } from '../../../common/steps/count-rows-by-field-value';
 import { UserRole, UserRoleType } from '../../../../types/user-role.type';
 
-export const step9GetTotalItems = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,
-                                   role: UserRole, stepsResults: StepsResultGetUsersList) => {
+export const step8GetTotalItems = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,
+                                   stepsResults: StepsResultGetUsersList) => {
+
+  const role: UserRole = stepsResults.step2GetCurrentUserRole;
 
   countRowsByFieldValue((err, statusCode, result) => {
     if (!err) {
-      stepsResults.step7GetTotalItems = result;
+      stepsResults.step8GetTotalItems = result;
       callback(null, 200, stepsResults);
     } else {
       callback(err, statusCode, null);
