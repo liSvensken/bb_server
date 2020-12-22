@@ -9,9 +9,11 @@ const stepIteration = (stepValues: IterableIterator<StepIterInterface>, res: Res
     const params: any[] = step.params;
     switch (true) {
       case !step.last:
-        step.fn((err: ErrorInterface, statusCode: number, nowStepsResults?: any) => {
-          if (statusCode === 200) {
+        step.fn((err: ErrorInterface, statusCode: number, nowStepsResults?: any, notFound?: boolean) => {
+          if (statusCode === 200 && !notFound) {
             stepIteration(stepValues, res, nowStepsResults);
+          } else if (statusCode === 200 && notFound) {
+            apiSend(res, statusCode, null, null);
           } else if (statusCode === 204) {
             apiSend(res, statusCode, null, null);
           } else {

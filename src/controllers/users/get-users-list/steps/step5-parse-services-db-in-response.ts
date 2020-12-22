@@ -5,7 +5,6 @@ import { UserRole, UserRoleType } from '../../../../types/user-role.type';
 
 export const step5ParseServicesDbInResponse = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,
                                                stepsResults: StepsResultGetUsersList) => {
-  const role = stepsResults.step2GetCurrentUserRole;
 
   parseServicesFromUsersList((err, statusCode, userRes) => {
     if (!err) {
@@ -14,5 +13,5 @@ export const step5ParseServicesDbInResponse = (callback: (err: ErrorInterface, s
     } else {
       callback(err, statusCode, null);
     }
-  }, stepsResults.step3GetUsersFromDb, stepsResults.step4TransformUsersDbInResponse, role);
+  }, stepsResults.step3GetUsersFromDb, stepsResults.step4TransformUsersDbInResponse);
 }

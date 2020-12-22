@@ -1,22 +1,17 @@
-import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { countRows } from '../../../common/steps/count-rows';
-import { UserDbEnum } from '../../../../enums/users/user-db.enum';
+import { TablesEnum } from '../../../../enums/tables-name.enum';
+import { ErrorInterface } from '../../../../utils/errors/error.interface';
+import { ServicesDbEnum } from '../../../../enums/services/services-db.enum';
 import { StepsResultGetUsersList } from '../interfaces/steps-result-get-users-list.interface';
-import { countRowsByFieldValue } from '../../../common/steps/count-rows-by-field-value';
-import { UserRole, UserRoleType } from '../../../../types/user-role.type';
 
-export const step8GetTotalItems = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,
+export const step7GetTotalItems = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUsersList) => void,
                                    stepsResults: StepsResultGetUsersList) => {
-
-  const role: UserRole = stepsResults.step2GetCurrentUserRole;
-
-  countRowsByFieldValue((err, statusCode, result) => {
+  countRows((err, statusCode, result) => {
     if (!err) {
-      stepsResults.step8GetTotalItems = result;
+      stepsResults.step7GetTotalItems = result;
       callback(null, 200, stepsResults);
     } else {
       callback(err, statusCode, null);
     }
-  }, TablesEnum.Users, role, UserDbEnum.Role);
+  }, TablesEnum.Users, ServicesDbEnum.Id);
 }

@@ -1,11 +1,11 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
 import { StepsResultGetUser } from '../interfaces/steps-result.interface';
-import { getRowsByField } from '../../../common/steps/get-rows-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { UserDbEnum } from '../../../../enums/users/user-db.enum';
 import { isUsersDb } from '../../../../models/user/check-is-models/check-is-users-db';
 import { UserRoleType } from '../../../../types/user-role.type';
 import { ErrorTypes } from '../../../../utils/errors/error.types';
+import { getRowsByField } from '../../../common/steps/get-rows-by-field';
 
 export const step3CheckRole = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetUser) => void,
                                stepsResults: StepsResultGetUser) => {
@@ -34,5 +34,5 @@ export const step3CheckRole = (callback: (err: ErrorInterface, statusCode: numbe
     } else {
       callback(err, statusCode, null);
     }
-  }, TablesEnum.Users, id, UserDbEnum.Id)
+  }, TablesEnum.Users, null, null,{ [UserDbEnum.Id]: id })
 }

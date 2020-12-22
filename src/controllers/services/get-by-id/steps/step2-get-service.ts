@@ -1,9 +1,9 @@
 import { ErrorInterface } from '../../../../utils/errors/error.interface';
-import { getRowsByField } from '../../../common/steps/get-rows-by-field';
 import { TablesEnum } from '../../../../enums/tables-name.enum';
 import { ServicesDbEnum } from '../../../../enums/services/services-db.enum';
 import { StepsResultGetService } from '../interfaces/steps-result-get-service';
 import { isServices } from '../../../../models/service/check-is-models/check-is-services';
+import { getRowsByField } from '../../../common/steps/get-rows-by-field';
 
 export const step2GetService = (callback: (err: ErrorInterface, statusCode: number, nowStepsResults: StepsResultGetService) => void,
                                 id: number, stepsResults: StepsResultGetService) => {
@@ -18,5 +18,5 @@ export const step2GetService = (callback: (err: ErrorInterface, statusCode: numb
     } else {
       callback(err, statusCode, null);
     }
-  }, TablesEnum.Services, id, ServicesDbEnum.Id);
+  }, TablesEnum.Services, null, null,{ [ServicesDbEnum.Id]: id });
 }

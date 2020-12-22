@@ -1,11 +1,9 @@
 import { ErrorInterface } from '../../../../../utils/errors/error.interface';
-import { UserDbModel } from '../../../../../models/user/user-db.model';
-import { UserResponseModel } from '../../../../../models/user/user-response.model';
-import { getRowsByField } from '../../get-rows-by-field';
 import { TablesEnum } from '../../../../../enums/tables-name.enum';
 import { CitiesDbEnum } from '../../../../../enums/cities/cities-db.enum';
-import { isCities, isCity } from '../../../../../models/city/check-is-models/check-is-cities';
+import { isCities } from '../../../../../models/city/check-is-models/check-is-cities';
 import { CityModel } from '../../../../../models/city/city.model';
+import { getRowsByField } from '../../get-rows-by-field';
 
 
 export const parseCityFromUser = (callback: (err: ErrorInterface, statusCode: number, cityRes: CityModel) => void,
@@ -23,6 +21,6 @@ export const parseCityFromUser = (callback: (err: ErrorInterface, statusCode: nu
         } else {
           callback(err, statusCode, null);
         }
-      }, TablesEnum.Cities, cityId, CitiesDbEnum.Id)
+      }, TablesEnum.Cities, null, null,{ [CitiesDbEnum.Id]: cityId })
   }
 }
